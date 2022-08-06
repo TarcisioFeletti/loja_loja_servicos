@@ -3,7 +3,7 @@
 class Conexao
 {
       private $servidor_mysql = 'localhost';
-      private $nome_banco = 'lojaweb';
+      private $nome_banco = 'empresa_db';
       private $usuario = 'root';
       private $senha = '';
       private $con;

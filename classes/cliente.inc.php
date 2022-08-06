@@ -1,6 +1,6 @@
 <?php
 class Cliente{
-    private $d_cliente;
+    private $id_cliente;
     private $cod_cliente;
     private $nome;
     private $endereco;

@@ -4,7 +4,7 @@ require_once 'includes/cabecalho.inc.php';
 <div class="corpo" align="center" style="line-height: 3em;">
     <h2>Login do Cliente</h2>
     <p>
-    <form action="../controlers/controlerClienteLogin.php" method="get">
+    <form action="../controlers/controlerCliente.php" method="get">
         Login: <input type="text" size="20" name="pLogin">
         <p>Senha: <input type="text" size="10" name="pSenha">
         <p><input type="submit" value="Login"> <input type="reset" value="Cancelar">
