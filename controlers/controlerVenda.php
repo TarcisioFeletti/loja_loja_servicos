@@ -9,7 +9,7 @@ if ($opcao == 1) {
     $cliente = $_SESSION['cliente'];
     $carrinho = $_SESSION['carrinho'];
     $total = $_SESSION['total'];
-    $venda = new Venda($cliente->cpf, $total);
+    $venda = new Venda($cliente->id_cliente, $total);
     $vendaDao = new VendaDAO();
     $vendaDao->incluirVenda($venda, $carrinho);
     $tipo = $_REQUEST['pMetodo'];

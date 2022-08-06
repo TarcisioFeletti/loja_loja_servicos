@@ -16,10 +16,9 @@ class VendaDAO
 
     public function incluirVenda($venda, $carrinho)
     {
-        $sql = ($this)->con->prepare('INSERT INTO vendas (cpf_cliente, dataVenda, valorTotal) VALUES (:cpf, :dt, :vt)');
-        $sql->bindValue(':cpf', $venda->get_cpf());
-        $sql->bindValue(':dt', $venda->get_data());
-        $sql->bindValue(':vt', $venda->get_valorTotal());
+        $sql = ($this)->con->prepare('INSERT INTO vendas (id_cliente, valor_total) VALUES (:cli, :vt)');
+        $sql->bindValue(':cli', $venda->get_id_cliente());
+        $sql->bindValue(':vt', $venda->get_valor_total());
         $sql->execute();
         $id = ($this)->getIdVenda();
         ($this)->incluirItens($id, $carrinho);

@@ -3,12 +3,12 @@ class Venda
 {
     private $id_venda;
     private $id_cliente;
-    private $valorTotal;
+    private $valor_total;
 
     function __construct($id_cliente, $valor)
     {
         ($this)->id_cliente = $id_cliente;
-        ($this)->valorTotal = $valor;
+        ($this)->valor_total = $valor;
     }
 
     public function get_id_venda()
@@ -31,13 +31,13 @@ class Venda
         ($this)->id_cliente = $novo_id_cliente;
     }
 
-    public function get_valorTotal()
+    public function get_valor_total()
     {
-        return ($this)->valorTotal;
+        return ($this)->valor_total;
     }
 
-    public function set_valorTotal($novo_valorTotal)
+    public function set_valor_total($novo_valorTotal)
     {
-        ($this)->valorTotal = $novo_valorTotal;
+        ($this)->valor_total = $novo_valor_total;
     }
 }
