@@ -12,22 +12,75 @@ if ($opcao == 1) { //Login
     $cliente = $clienteDao->autenticar($email, $senha);
     if ($cliente != NULL) {
         session_start();
+        $_SESSION['logado'] = true;
+        $_SESSION['tipousuario'] = '2';
         $_SESSION['cliente'] = $cliente;
         header('Location:../views/dadosCompra.php');
     } else {
         header('Location:../views/formClienteLogin.php?erro=1');
     }
-}else if($opcao == 2){ //Cadastro
-    $nome = $_REQUEST['pNome'];
-    $cod_cliente = $_REQUEST['pCodCliente'];
-    $endereco = $_REQUEST['pEndereco'];
-    $telefone = $_REQUEST['pTelefone'];
-    $cpf = $_REQUEST['pCpf'];
-    $dt_nascimento = $_REQUEST['pDtNascimento'];
+} else if ($opcao == 2) { //Cadastro
     $email = strtolower($_REQUEST['pLogin']);
     $senha = strtolower($_REQUEST['pSenha']);
     $cliente = new Cliente();
-    $cliente->setAll($cod_cliente, $nome, $endereco, $telefone, $cpf, $dt_nascimento, $email, $senha);
+    $cliente->setAll(
+        $_REQUEST['pNome'],
+        $_REQUEST['pEndereco'],
+        $_REQUEST['pTelefone'],
+        $_REQUEST['pCpf'],
+        $_REQUEST['pDtNascimento'],
+        $email,
+        $senha
+    );
     $clienteDao->incluirCliente($cliente);
     header('Location:../views/formLogin');
+} else if ($opcao == 3) { //atualizar
+    $email = strtolower($_REQUEST['pLogin']);
+    $senha = strtolower($_REQUEST['pSenha']);
+    $cliente = new Cliente();
+    $cliente->setAll(
+        $_REQUEST['pNome'],
+        $_REQUEST['pEndereco'],
+        $_REQUEST['pTelefone'],
+        $_REQUEST['pCpf'],
+        $_REQUEST['pDtNascimento'],
+        $email,
+        $senha
+    );
+    $cliente->set_cpf($_REQUEST['pId']);
+    $clienteDao = new ClienteDAO();
+    $clienteDao->atualizarCliente($cliente);
+    session_start();
+    $_SESSION['cliente'] = $cliente;
+    header('Location:controlerCliente.php?opcao=4');
+} else if ($opcao == 4) { // exibir dados cadastrais
+    session_start();
+    if (isset($_SESSION['cliente'])) {
+        header('Location:../views/exibirClienteDadosCadastral.php');
+    } else {
+        header('Location:../views/formLogin.php?erro=2');
+    }
+} else if ($opcao == 5) { //excluir
+    session_start();
+    if (isset($_SESSION['cliente'])) {
+        $clienteDao->excluirCliente($_SESSION['cliente']);
+        header('Location:controlerCliente.php?opcao=6');
+    } else {
+        header('Location:../views/formLogin.php?erro=2');
+    }
+} else if ($opcao == 6) { //deslogar
+    session_start();
+    if (isset($_SESSION['cliente'])) {
+        unset($_SESSION['logado']);
+        unset($_SESSION['tipousuario']);
+        unset($_SESSION['cliente']);
+    }
+    header('Location:../views/formLogin.php');
+} else if ($opcao == 7) { //Melhoria de redirecionamento
+    session_start();
+    if (isset($_SESSION['cliente']) && $_SESSION['logado'] == true && $_SESSION['tipousuario'] == '2') {
+        header('Location:../views/dadosCompra.php');
+    } else {
+        header('Location:../views/formLogin.php?erro=2');
+    }
 }
