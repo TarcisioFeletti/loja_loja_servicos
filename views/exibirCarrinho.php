@@ -31,9 +31,12 @@ require_once '../dao/tipoDAO.inc.php';
                 <table border="1" cellspacing="2" cellpadding="1" width="50%">
                     <tr>
                         <th witdh="10%">Nro</th>
+                        <th width="10%">Foto</th>
                         <th>Nome</th>
                         <th>Tipo</th>
-                        <th>Valor</th>
+                        <th>Valor do Serviço</th>
+                        <th>Valor do Tipo</th>
+                        <th>Valor Total do Serviço</th>
                         <th>Data</th>
                         <th width="10%">Remover?</th>
                     </tr>
@@ -41,13 +44,17 @@ require_once '../dao/tipoDAO.inc.php';
                     foreach ($carrinho as $servicoCarrinho) {
                         //MONTAGEM DA TABELA
                         $contador++;
-                        $total += $servicoCarrinho->get_preco();
+                        $tipo = $tipoDao->getTipo($servicoCarrinho->get_id_tipo());
+                        $total += $servicoCarrinho->get_valor() + $tipo->get_valor();
                         echo "<tr align='center'>";
                         echo "<td>" . $contador . "</td>";
+                        echo "<td><img src='imagens/produtos/" . $servicoCarrinho->get_id_servico() . ".jpg' width='70%'></td>";
                         echo "<td>" . $servicoCarrinho->get_nome() . "</td>";
-                        echo "<td>" . $tipoDao->getTipo($servicoCarrinho->get_id_tipo())->get_nome() . "</td>";
-                        echo "<td> R$ " . $servicoCarrinho->get_preco() . "</td>";
-                        echo "<td> DATA </td>"; //data aqui!
+                        echo "<td>" . $tipo->get_nome() . "</td>";
+                        echo "<td> R$ " . $servicoCarrinho->get_valor() . "</td>";
+                        echo "<td> R$ " . $tipo->get_valor() . "</td>";
+                        echo "<td> R$ " . $servicoCarrinho->get_valor() + $tipo->get_valor() . "</td>";
+                        echo "<td>". formatarData($servicoCarrinho->get_data())."</td>"; //data aqui!
                         echo "<td><a href='../controlers/controlerCarrinho.php?opcao=2&id=" . ($contador - 1) . "'><img src='imagens/rem3.jpg'></a></td>";
                         echo "</tr>";
                     }
