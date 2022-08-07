@@ -9,18 +9,15 @@ $cliente = $_SESSION['cliente'];
 <div class="corpo" align="center" style="line-height: 3em;">
     <h2>Dados Cadastrais</h2>
     <p>
-    <p>CPF: <?php echo $cliente->get_cpf() ?>
+    <p>ID: <?php echo $cliente->get_id_cliente() ?>
     <p>Nome: <?php echo $cliente->get_nome() ?>
-    <p>Logradouro: <?php echo $cliente->get_logradouro() ?>
-    <p>Cidade: <?php echo $cliente->get_cidade() ?>
-    <p>Estado: <?php echo $cliente->get_estado() ?>
-    <p>CEP: <?php echo $cliente->get_cep() ?>
+    <p>Endereço: <?php echo $cliente->get_endereco() ?>
     <p>Telefone: <?php echo $cliente->get_telefone() ?>
-    <p>Data de Nascimento: <?php echo conversorData($cliente->get_data_nascimento()) ?>
-    <p>RG: <?php echo $cliente->get_rg() ?>
+    <p>CPF: <?php echo $cliente->get_cpf() ?>
+    <p>Data de Nascimento: <?php echo conversorData($cliente->dt_nascimento()) ?>
     <p>E-mail: <?php echo $cliente->get_email() ?>
     <p>
-    <p>Deseja excluir sua conta? Clique <a href='../controlers/controlerCliente.php?opcao=4'>aqui</a>!
+    <p>Deseja excluir sua conta? Clique <a href='../controlers/controlerCliente.php?opcao=5'>aqui</a>!
 </div>
 <?php
 require_once 'includes/rodape.inc.php';

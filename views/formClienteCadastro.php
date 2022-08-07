@@ -5,21 +5,23 @@ require_once 'includes/autenticarMenu.inc.php';
     <h2>Cadastro do Cliente</h2>
     <p>
         <?php
-        session_start();
-        if (isset($_SESSION['cliente'])) {
-            echo "<p>Você já está logado! Deseja <a href='../controlers/controlerClienteLogin.php?opcao=3'>sair</a>?";
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        if ($_SESSION['logado'] == true && $_SESSION['tipousuario'] == 2) {
+            echo "<p>Você já está logado! Deseja <a href='../controlers/controlerCliente.php?opcao=6'>sair</a>?";
         } else {
         ?>
     <form action="../controlers/controlerCliente.php" method="post" enctype="multipart/form-data>">
         Nome: <input type="text" size="50" name="pNome">
-        <p>Endereço: <input type="text" size="100" name="pEndereco">
-        <p>Telefone: <input type="text" size="12" name="pTelefone">
-        <p>CPF: <input type=" text" size="12" name="pCpf">
+        <p>Endereço: <input type="text" size="50" name="pEndereco">
+        <p>Telefone: <input type="text" size="20" name="pTelefone">
+        <p>CPF: <input type=" text" size="13" name="pCpf">
         <p>Data de Nascimento: <input type="date" name="pData">
         <p>E-mail: <input type="text" size="20" name="pEmail">
-        <p>Senha: <input type="text" size="12" name="pSenha">
+        <p>Senha: <input type="password" size="8" name="pSenha">
         <p><input type="submit" value="Cadastrar"> <input type="reset" value="Cancelar">
-            <input type="hidden" name='opcao' value='1'>
+            <input type="hidden" name='opcao' value='2'>
     </form>
     <p>Já é cliente? Acesse o sistema <a href="formClienteLogin.php">AQUI</a>!</p>
     <p>

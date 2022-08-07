@@ -56,5 +56,6 @@ if(!isset($_REQUEST['id']) || !isset($_SESSION['dias'])){
         </font>
 </div>
 <?php
+}
 require_once 'includes/rodape.inc.php';
 ?>
