@@ -10,11 +10,18 @@ require_once '../dao/fabricanteDAO.inc.php';
         if (isset($_REQUEST['status'])) {
             echo "<h2><b>Carrinho vazio!</b></h2>";
         } else {
-            session_start();
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
             $carrinho = $_SESSION['carrinho'];
             $contador = 0;
             $total = 0;
             $fabricanteDao = new FabricanteDAO();
+            if (isset($_REQUEST['erro'])) {
+                if ((int)($_REQUEST['erro']) == "1") {
+                    echo "<b><font face='Verdana' size='2' color='red'>O produto já existe no carrinho!</font></b>";
+                }
+            }
         ?>
             <font face="Tahoma">
                 <table border="1" cellspacing="2" cellpadding="1" width="50%">
