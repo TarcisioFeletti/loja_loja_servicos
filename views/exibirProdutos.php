@@ -5,10 +5,15 @@ require_once '../classes/produto.inc.php';
 require_once 'includes/autenticar.inc.php';
 require_once '../utils/dataUtil.inc.php';
 require_once '../dao/fabricanteDAO.inc.php';
-//session_start();
+require_once 'includes/iniciarSessao.inc.php';
 $produtos = $_SESSION['produtos'];
 $fabricantes = $_SESSION['fabricantes'];
 $fabricanteDao = new FabricanteDAO();
+
+if(!isset($_REQUEST['id']) || !isset($_SESSION['dias'])){
+    echo "<h1 color='red'> Fluxo quebrado </h1>";
+    echo "<h3>Retorne para a página <a href='index.php'>principal</a> </h3>";
+}else{
 ?>
 <div class="corpo" align="center" style="line-height: 3em;">
     <h1>Produtos cadastrados</h1>

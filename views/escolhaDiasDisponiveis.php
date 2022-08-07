@@ -2,6 +2,7 @@
 <?php
 require_once 'includes/autenticarMenu.inc.php';
 require_once '../utils/dataUtil.inc.php';
+require_once 'includes/iniciarSessao.inc.php';
 if(!isset($_REQUEST['id']) || !isset($_SESSION['dias'])){
     echo "<h1 color='red'> Fluxo quebrado </h1>";
     echo "<h3>Retorne para a página <a href='index.php'>principal</a> </h3>";

@@ -1,6 +1,10 @@
 <?php
 require_once 'includes/autenticarMenu.inc.php';
-require_once '../dao/fabricanteDAO.inc.php';
+require_once 'includes/iniciarSessao.inc.php';
+if(!isset($_REQUEST['carrinho'])){
+    echo "<div class='corpo' align='center' style='line-height: 3cm;''>";
+    echo "<h2><b>Carrinho vazio!</b></h2></div>";
+}else{
 ?>
 <div class="corpo" align="center" style="line-height: 3cm;">
     <h1>Carrinho de Compras</h1>
@@ -15,7 +19,7 @@ require_once '../dao/fabricanteDAO.inc.php';
             $carrinho = $_SESSION['carrinho'];
             $contador = 0;
             $total = 0;
-            $fabricanteDao = new FabricanteDAO();
+            //$fabricanteDao = new FabricanteDAO();
             if (isset($_REQUEST['erro'])) {
                 if ((int)($_REQUEST['erro']) == "1") {
                     echo "<b><font face='Verdana' size='2' color='red'>O produto já existe no carrinho!</font></b>";
@@ -60,5 +64,6 @@ require_once '../dao/fabricanteDAO.inc.php';
         ?>
 </div>
 <?php
+}
 require_once '../views/includes/rodape.inc.php';
 ?>
