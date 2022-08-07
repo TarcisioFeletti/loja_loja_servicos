@@ -1,5 +1,4 @@
 <?php
-require_once '../classes/produto.inc.php';
 require_once '../dao/clienteDAO.inc.php';
 require_once '../classes/cliente.inc.php';
 
@@ -33,8 +32,8 @@ if ($opcao == 1) { //Login
         $senha
     );
     $clienteDao->incluirCliente($cliente);
-    header('Location:../views/formLogin');
-} else if ($opcao == 3) { //atualizar
+    header('Location:../views/formLogin.php');
+} else if ($opcao == 3) { //Atualizar
     $email = strtolower($_REQUEST['pLogin']);
     $senha = strtolower($_REQUEST['pSenha']);
     $cliente = new Cliente();
@@ -53,34 +52,36 @@ if ($opcao == 1) { //Login
     session_start();
     $_SESSION['cliente'] = $cliente;
     header('Location:controlerCliente.php?opcao=4');
-} else if ($opcao == 4) { // exibir dados cadastrais
+} else if ($opcao == 4) { //Exibir
     session_start();
     if (isset($_SESSION['cliente'])) {
         header('Location:../views/exibirClienteDadosCadastral.php');
     } else {
         header('Location:../views/formLogin.php?erro=2');
     }
-} else if ($opcao == 5) { //excluir
+} else if ($opcao == 5) { //Excluir
     session_start();
     if (isset($_SESSION['cliente'])) {
         $clienteDao->excluirCliente($_SESSION['cliente']);
         header('Location:controlerCliente.php?opcao=6');
     } else {
-        header('Location:../views/formLogin.php?erro=2');
+        header('Location:../views/formClienteLogin.php?erro=2');
     }
-} else if ($opcao == 6) { //deslogar
+} else if ($opcao == 6) { //Deslogar
     session_start();
-    if (isset($_SESSION['cliente'])) {
+    if (isset($_SESSION['logado'])) {
         unset($_SESSION['logado']);
         unset($_SESSION['tipousuario']);
-        unset($_SESSION['cliente']);
+        if (isset($_SESSION['cliente'])) {
+            unset($_SESSION['cliente']);
+        }
     }
     header('Location:../views/formLogin.php');
-} else if ($opcao == 7) { //Melhoria de redirecionamento
+} else if ($opcao == 7) { //Redirecionamento
     session_start();
-    if (isset($_SESSION['cliente']) && $_SESSION['logado'] == true && $_SESSION['tipousuario'] == '2') {
+    if ($_SESSION['logado'] == true && $_SESSION['tipousuario'] == '2') {
         header('Location:../views/dadosCompra.php');
     } else {
-        header('Location:../views/formLogin.php?erro=2');
+        header('Location:../views/formClienteLogin.php?erro=2');
     }
 }
