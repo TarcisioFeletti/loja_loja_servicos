@@ -1,23 +1,25 @@
 <?php
 require_once 'includes/autenticar.inc.php';
 require_once 'includes/autenticarMenu.inc.php';
-require_once '../classes/produto.inc.php';
-require_once '../dao/fabricanteDAO.inc.php';
+require_once '../classes/servico.inc.php';
+require_once '../dao/tipoDAO.inc.php';
 ?>
 <div class="corpo" align="center" style="line-height: 3cm;">
     <h1>Finalizar Compra</h1>
     <p>
         <?php
-        session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
         if (!isset($_SESSION['cliente'])) {
-            echo "<h2><b>Carrinho vazio!</b></h2>";
+            echo "<h2><b>Carrinho vazio!</b></h2>"; //mudar
         } else {
             $cliente = $_SESSION['cliente'];
             $carrinho = $_SESSION['carrinho'];
             $total = $_SESSION['total'];
-            $fabricanteDao = new FabricanteDAO();
+            $tipoDao = new TipoDAO();
         ?>
-    <div style="line-height: 1cm;">
+    <div style="line-height: 1cm;"> 
         <p>Nome: <?php echo $cliente->nome ?>
         <p>CPF: <?php echo $cliente->cpf ?>
         <p>Endereço: <?php echo $cliente->logradouro ?>

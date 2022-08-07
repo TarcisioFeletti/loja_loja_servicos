@@ -21,7 +21,7 @@ require_once 'includes/autenticarMenu.inc.php';
                 echo "<b><font face='Verdana' size='2' color='red'>Login Incorreto!</font></b>";
             else
             if ((int)($_REQUEST['erro']) == "2")
-                echo "<b><font face='Verdana' size='2' color='blue'> Por favor, efetue seu login novamente.</font></b>";
+                echo "<b><font face='Verdana' size='2' color='blue'> Por favor, efetue seu login.</font></b>";
         }
         ?>
 </div>
