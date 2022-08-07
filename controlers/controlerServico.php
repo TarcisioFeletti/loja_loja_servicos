@@ -42,7 +42,7 @@ if ($opcao == 1) { //inclusão
     } else { //opcao == 6
         header('Location:../views/servicosVenda.php');
     }
-} else if ($opcao == 3) {
+} else if ($opcao == 3) { //enviar para a tela de atualizar
     $id = (int)$_REQUEST['id'];
     $servicoDao = new ServicoDAO();
     $servico = $servicoDao->getServico($id);

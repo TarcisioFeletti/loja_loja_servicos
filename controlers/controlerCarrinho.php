@@ -48,7 +48,6 @@ if ($opcao == 1) { //incluir do carrinho
     } else {
         $total = $_REQUEST['total'];
         $_SESSION['total'] = $total;
-        //header('Location:../controlers/controlerClienteLogin.php');
-        header('Location:../views/formClienteLogin.php?erro=2');
+        header('Location:../controlers/controlerClienteLogin.php?opcao=7');
     }
 }

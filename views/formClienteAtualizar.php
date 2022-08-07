@@ -17,7 +17,7 @@ $cliente = $_SESSION['cliente'];
         <p>E-mail: <input type="text" size="20" name="pEmail" value="<?php echo $cliente->get_email() ?>">
         <p>Senha: <input type="text" size="12" name="pSenha" value="<?php echo $cliente->get_senha() ?>">
         <p><input type="submit" value="Atualizar"> <input type="reset" value="Cancelar">
-            <input type="hidden" name="opcao" value="2">
+            <input type="hidden" name="opcao" value="3">
     </form>
     <p>
 </div>
