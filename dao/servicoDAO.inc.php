@@ -64,10 +64,9 @@ class ServicoDAO
 
     public function incluirServico(Servico $servico)
     {
-        $sql = ($this)->con->prepare("INSERT INTO lojaweb.servicos(nome, cod_servico, valor, descricao, id_tipo) 
-        VALUES (:nome, :cod, :preco, :descricao, :id_tipo)");
+        $sql = ($this)->con->prepare("INSERT INTO lojaweb.servicos(nome, valor, descricao, id_tipo) 
+        VALUES (:nome, :preco, :descricao, :id_tipo)");
         $sql->bindValue(":nome", $servico->get_nome());
-        $sql->bindValue(":cod", $servico->get_cod_servico());
         $sql->bindValue(":preco", $servico->get_valor());
         $sql->bindValue(":descricao", $servico->get_descricao());
         $sql->bindValue(":id_tipo", $servico->get_id_servico());
@@ -115,7 +114,6 @@ class ServicoDAO
             lojaweb.servicos 
             SET 
             nome = :nome,
-            cod_servico = :cod, 
             valor = :preco, 
             descricao = :descricao, 
             id_tipo = :id_tipo
@@ -123,7 +121,6 @@ class ServicoDAO
             id_servico = :id_servico"
         );
         $sql->bindValue(":nome", $servico->get_nome());
-        $sql->bindValue(":cod", $servico->get_cod_servico());
         $sql->bindValue(":preco", $servico->get_valor());
         $sql->bindValue(":descricao", $servico->get_descricao());
         $sql->bindValue(":id_tipo", $servico->get_id_tipo());

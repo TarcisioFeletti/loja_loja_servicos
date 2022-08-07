@@ -10,7 +10,6 @@ class Cliente{
     private $senha;
 
 function setAll(
-    $cod_cliente,
     $nome,
     $endereco,
     $telefone,
@@ -19,7 +18,6 @@ function setAll(
     $email,
     $senha
 ){
-    ($this)->cod_cliente = $cod_cliente;
     ($this)->nome = $nome;
     ($this)->endereco = $endereco;
     ($this)->telefone = $telefone;

@@ -52,7 +52,7 @@ $fabricanteDao = new FabricanteDAO();
                             <font color="black">Valor: </font><?php echo $produto->get_preco(); ?>
                         </b></font>
                 </td>
-                <td colspan="2"><?php echo '<a href="../controlers/controlerCarrinho.php?opcao=1&id=' . $produto->get_produto_id() . '"><img src="imagens/botao_comprar2.png" border="0"></a>' ?></td>
+                <td colspan="2"><?php echo '<a href="../controlers/controlerDiasDisponiveis.php?opcao=1&id=' . $produto->get_produto_id() . '"><img src="imagens/botao_comprar2.png" border="0"></a>' ?></td>
             </tr>
         </table>
         <p>

@@ -1,11 +1,11 @@
 <?php
 class Servico
 {
-    private $id_servico;
-    private $nome;
-    private $valor;
-    private $descricao;
-    private $id_tipo;
+    protected $id_servico;
+    protected $nome;
+    protected $valor;
+    protected $descricao;
+    protected $id_tipo;
 
 
     //metodo para setar todos os valores
