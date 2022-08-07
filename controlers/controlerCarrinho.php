@@ -1,13 +1,16 @@
 <?php
 require_once '../classes/servico.inc.php';
 require_once '../dao/servicoDAO.inc.php';
+require_once '../classes/servicoCarrinho.inc.php';
 
 $opcao = (int)$_REQUEST['opcao'];
 
 if ($opcao == 1) { //incluir do carrinho
     $id = (int)$_REQUEST['id'];
+    $data = $_REQUEST['pData'];
     $servicoDao = new ServicoDAO();
     $servico = $servicoDao->getServico($id);
+    $servicoCarrinho = new servicoCarrinho($servico, $data);
     session_start();
     if (!isset($_SESSION['carrinho'])) {
         $carrinho = array();
@@ -19,7 +22,7 @@ if ($opcao == 1) { //incluir do carrinho
             }
         }
     }
-    $carrinho[] = $produto;
+    $carrinho[] = $servicoCarrinho;
     sort($carrinho);
     $_SESSION['carrinho'] = $carrinho;
     header('Location:../views/exibirCarrinho.php'); //adiciona no carrinho

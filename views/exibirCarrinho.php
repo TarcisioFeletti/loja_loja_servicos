@@ -1,6 +1,5 @@
 <?php
 require_once 'includes/autenticarMenu.inc.php';
-require_once '../views/includes/cabecalho.inc.php';
 require_once '../dao/fabricanteDAO.inc.php';
 ?>
 <div class="corpo" align="center" style="line-height: 3cm;">
