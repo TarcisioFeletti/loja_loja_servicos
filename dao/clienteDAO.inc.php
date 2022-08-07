@@ -29,9 +29,8 @@ class ClienteDAO
     }
 
     function incluirCliente(Cliente $cliente){
-        $sql = ($this)->con->prepare("INSERT INTO `clientes` (`cod_cliente`, `nome`, `endereco`, `telefone`, `cpf`, `dt_nascimento`, `email`, `senha`) 
-        VALUES (:cod, :nome, :endereco, :tel, :cpf, :dt, :email, :senha);");
-        $sql->bindValue(':cod', $cliente->get_cod_cliente());
+        $sql = ($this)->con->prepare("INSERT INTO `clientes` (`nome`, `endereco`, `telefone`, `cpf`, `dt_nascimento`, `email`, `senha`) 
+        VALUES (:nome, :endereco, :tel, :cpf, :dt, :email, :senha);");
         $sql->bindValue(':nome', $cliente->get_nome());
         $sql->bindValue(':endereco', $cliente->get_endereco());
         $sql->bindValue(':tel', $cliente->get_telefone());

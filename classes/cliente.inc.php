@@ -1,7 +1,6 @@
 <?php
 class Cliente{
     private $id_cliente;
-    private $cod_cliente;
     private $nome;
     private $endereco;
     private $telefone;
@@ -32,8 +31,6 @@ function setAll(
 
 function set_id_cliente($id_cliente) { $this->id_cliente = $id_cliente; }
 function get_id_cliente() { return $this->id_cliente; }
-function set_cod_cliente($cod_cliente) { $this->cod_cliente = $cod_cliente; }
-function get_cod_cliente() { return $this->cod_cliente; }
 function set_nome($nome) { $this->nome = $nome; }
 function get_nome() { return $this->nome; }
 function set_endereco($endereco) { $this->endereco = $endereco; }

@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/cabecalho.inc.php';
+require_once 'includes/autenticarMenu.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -11,13 +11,13 @@ require_once 'includes/cabecalho.inc.php';
 
 <body>
 
-    <!-- Featured Start -->
-    <div class="container-fluid pt-5">
+   <!-- Featured Start 
+       <div class="container-fluid pt-5">
         <div class="row px-xl-5 pb-3">
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
                     <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
-                    <h5 class="font-weight-semi-bold m-0">Quality Product</h5>
+                    <h5 class="font-weight-semi-bold m-0">Serviços de qualidade</h5>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
@@ -40,7 +40,7 @@ require_once 'includes/cabecalho.inc.php';
             </div>
         </div>
     </div>
-    <!-- Featured End -->
+    Featured End -->
 
 
     <!-- Categories Start -->
