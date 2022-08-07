@@ -1,23 +1,28 @@
 <?php
-require_once '../classes/produto.inc.php';
-require_once '../dao/produtoDAO.inc.php';
+require_once '../classes/servico.inc.php';
+require_once '../dao/servicoDAO.inc.php';
 
 $opcao = (int)$_REQUEST['opcao'];
 
 if ($opcao == 1) { //incluir do carrinho
     $id = (int)$_REQUEST['id'];
-    $produtoDao = new ProdutoDAO();
-    $produto = $produtoDao->getProduto($id);
+    $servicoDao = new ServicoDAO();
+    $servico = $servicoDao->getServico($id);
     session_start();
     if (!isset($_SESSION['carrinho'])) {
         $carrinho = array();
     } else {
         $carrinho = $_SESSION['carrinho'];
+        foreach ($carrinho as $itemCarrinho) {
+            if ($servico->get_id_servico() == $itemCarrinho->get_id_servico()) {
+                header('Location:../views/exibirCarrinho.php?erro=1');
+            }
+        }
     }
     $carrinho[] = $produto;
     sort($carrinho);
     $_SESSION['carrinho'] = $carrinho;
-    header('Location:../views/exibirCarrinho.php');
+    header('Location:../views/exibirCarrinho.php'); //adiciona no carrinho
 } else if ($opcao == 2) { //remover do carrinho
     $index = (int)$_REQUEST['index'];
     session_start();
@@ -34,7 +39,6 @@ if ($opcao == 1) { //incluir do carrinho
         header("Location:../views/exibirCarrinho.php");
     }
 } else if ($opcao == 4) {
-    echo $_REQUEST['total'];
     session_start();
     if (!isset($_SESSION['carrinho'])) {
         //erro de carrinho vazio
