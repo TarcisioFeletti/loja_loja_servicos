@@ -1,6 +1,6 @@
 <?php
-require_once 'includes/cabecalho.inc.php';
 require_once 'includes/autenticar.inc.php';
+require_once 'includes/autenticarRestrito.inc.php';
 //session_start();
 $fabricantes = $_SESSION['fabricantes'];
 ?>

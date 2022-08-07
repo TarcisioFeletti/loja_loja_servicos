@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php
-require_once 'includes/cabecalho.inc.php';
+require_once 'includes/autenticarMenu.inc.php';
 ?>
 
 
