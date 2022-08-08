@@ -1,7 +1,7 @@
 <?php
-require_once 'includes/autenticarMenu.inc.php';
 require_once '../classes/servico.inc.php';
 require_once '../dao/tipoDAO.inc.php';
+require_once 'includes/autenticarMenu.inc.php';
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }

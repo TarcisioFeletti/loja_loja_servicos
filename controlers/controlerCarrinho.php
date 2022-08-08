@@ -50,4 +50,10 @@ if ($opcao == 1) { //incluir do carrinho
         $_SESSION['total'] = $total;
         header('Location:../controlers/controlerClienteLogin.php?opcao=7');
     }
+} else if ($opcao == 5) { //Esvaziar Carrinho
+    session_start();
+    if (isset($_SESSION['carrinho'])) {
+        unset($_SESSION['carrinho']);
+    }
+    header("Location:controlerCarrinho.php?opcao=3");
 }

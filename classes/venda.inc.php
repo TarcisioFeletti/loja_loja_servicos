@@ -36,7 +36,7 @@ class Venda
         return ($this)->valor_total;
     }
 
-    public function set_valor_total($novo_valorTotal)
+    public function set_valor_total($novo_valor_total)
     {
         ($this)->valor_total = $novo_valor_total;
     }

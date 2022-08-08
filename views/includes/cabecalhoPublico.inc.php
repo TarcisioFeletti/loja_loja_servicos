@@ -40,20 +40,20 @@
                         <ul class="menu">
                                 <li><a href="index.php">Home</a></li>
                                 <li><a href="#">Quem somos?</a></li>
-                                <li><a href="../views/controlerCliente.php?opcao=3">Area do Cliente</a>
+                                <li><a href="../controlers/controlerCliente.php?opcao=4">Area do Cliente</a>
                                         <ul>
-                                                <li><a href="../views/controlerCliente.php?opcao=3">Dados Cadastrais</a></li>
+                                                <li><a href="../controlers/controlerCliente.php?opcao=4">Dados Cadastrais</a></li>
                                                 <li><a href="../views/formClienteAtualizar.php">Alterar Dados Cadastrais</a></li>
                                         </ul>
                                 </li>
-                                <li><a href="../controlers/controlerFabricante.php?opcao=5">Vendas</a>
+                                <li><a href="../controlers/controlerServico.php?opcao=6">Vendas</a>
                                         <ul>
-                                                <li><a href="../controlers/controlerServico.php?opcao=2">Relação de produtos</a></li>
+                                                <li><a href="../controlers/controlerServico.php?opcao=6">Relação de produtos</a></li>
                                                 <li><a href="../controlers/controlerCarrinho.php?opcao=3">Ver carrinho</a></li>
-                                                <li><a href="../controlers/controlerCarrinho.php?opcao=6">Esvaziar carrinho</a></li>
+                                                <li><a href="../controlers/controlerCarrinho.php?opcao=5">Esvaziar carrinho</a></li>
                                         </ul>
                                 </li>
-                                <li><a href="#">Contato</a></li>
+                                <li><a href="contato.php">Contato</a></li>
                                 <li><a href="formLogin.php">Login</a></li>
                         </ul>
                 </nav>

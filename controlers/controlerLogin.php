@@ -1,5 +1,6 @@
 <?php
 require_once '../dao/conexao.inc.php';
+require_once '../classes/cliente.inc.php';
 require_once '../dao/clienteDAO.inc.php';
 
 function efetuarLogin($login, $senha)
