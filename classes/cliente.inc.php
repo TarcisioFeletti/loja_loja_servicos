@@ -7,9 +7,14 @@ class Cliente
     private $telefone;
     private $cpf;
     private $dt_nascimento;
+    private $dt_exclusao;
     private $email;
     private $senha;
 
+    function __construct()
+    {
+        ($this)->dt_exclusao = null;
+    }
     function setAll(
         $novo_nome,
         $novo_endereco,
@@ -67,6 +72,14 @@ class Cliente
     function get_cpf()
     {
         return $this->cpf;
+    }
+    function set_dt_exclusao($novo_dt_exclusao)
+    {
+        $this->dt_exclusao = strtotime(str_replace('/', '-', $novo_dt_exclusao));
+    }
+    function get_dt_exclusao()
+    {
+        return $this->dt_exclusao;
     }
     function set_dt_nascimento($novo_dt_nascimento)
     {
