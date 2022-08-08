@@ -33,7 +33,7 @@ $datas = $_SESSION['datas'];
             <?php
             $count = 1;
             foreach ($datas as $data) {
-                echo "<input type='date' name='pData" . $count . "' value='" . conversorData(strtotime($data->get_data_servico())) . "'>";
+                echo "<input type='date' name='pData" . $count . "' value='" . conversorData($data->get_data_servico()) . "'>";
                 $count++;
             }
             for ($i = $count; $i <= 7; $i++) {
