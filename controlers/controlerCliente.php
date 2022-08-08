@@ -18,7 +18,7 @@ if ($opcao == 1) { //Login
     } else {
         header('Location:../views/formClienteLogin.php?erro=1');
     }
-} else if ($opcao == 2) { //Cadastro
+} else if ($opcao == 2 || $opcao == 8) { //Cadastro
     $email = strtolower($_REQUEST['pLogin']);
     $senha = strtolower($_REQUEST['pSenha']);
     $cliente = new Cliente();
@@ -32,7 +32,11 @@ if ($opcao == 1) { //Login
         $senha
     );
     $clienteDao->incluirCliente($cliente);
-    header('Location:../views/formLogin.php');
+    if ($opcao == 2) {
+        header('Location:../views/formLogin.php');
+    } else if ($opcao == 8) {
+        header('Location:controlerCliente.php?opcao=9');
+    }
 } else if ($opcao == 3) { //Atualizar
     $email = strtolower($_REQUEST['pEmail']);
     $senha = strtolower($_REQUEST['pSenha']);
@@ -52,7 +56,7 @@ if ($opcao == 1) { //Login
     session_start();
     $_SESSION['cliente'] = $cliente;
     header('Location:controlerCliente.php?opcao=4');
-} else if ($opcao == 4) { //Exibir
+} else if ($opcao == 4) { //Exibir Um
     session_start();
     if (isset($_SESSION['cliente'])) {
         header('Location:../views/exibirClienteDadosCadastral.php');
@@ -84,4 +88,9 @@ if ($opcao == 1) { //Login
     } else {
         header('Location:../views/formClienteLogin.php?erro=2');
     }
+} else if ($opcao == 9) { //Visualizar Todos
+    $clienteDao = new ClienteDAO();
+    session_start();
+    $_SESSION['clientes'] = $clienteDao->getClientes();
+    header('Location:../views/exibirClientes.php');
 }

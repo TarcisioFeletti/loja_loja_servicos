@@ -21,9 +21,19 @@ require_once 'includes/autenticarMenu.inc.php';
         <p>E-mail: <input type="text" size="20" name="pEmail">
         <p>Senha: <input type="password" size="8" name="pSenha">
         <p><input type="submit" value="Cadastrar"> <input type="reset" value="Cancelar">
-            <input type="hidden" name='opcao' value='2'>
+            <?php
+            if ($_SESSION['logado'] == true && $_SESSION['tipousuario'] == 1) {
+                echo "<input type='hidden' name='opcao' value='8'>";
+            } else {
+                echo "<input type='hidden' name='opcao' value='2'>";
+            }
+            ?>
     </form>
-    <p>Já é cliente? Acesse o sistema <a href="formClienteLogin.php">AQUI</a>!</p>
+    <?php
+            if (!($_SESSION['logado'] == true && $_SESSION['tipousuario'] == 1)) {
+                echo '<p>Já é cliente? Acesse o sistema <a href="formClienteLogin.php">AQUI</a>!</p>';
+            }
+    ?>
     <p>
     <?php
         }
