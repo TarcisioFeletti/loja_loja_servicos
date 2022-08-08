@@ -34,6 +34,9 @@ class ClienteDAO
             $cliente = new Cliente();
             $cliente->setAll($c->nome, $c->endereco, $c->telefone, $c->cpf, $c->dt_nascimento, $c->email, $c->senha);
             $cliente->set_id_cliente($c->id_cliente);
+            if ($c->dt_exclusao != null) {
+                $cliente->set_dt_exclusao($c->dt_exclusao);
+            }
             return $cliente;
         } else {
             return NULL;
@@ -98,6 +101,9 @@ class ClienteDAO
             $cliente = new Cliente();
             $cliente->setAll($c->nome, $c->endereco, $c->telefone, $c->cpf, $c->dt_nascimento, $c->email, $c->senha);
             $cliente->set_id_cliente($c->id_cliente);
+            if ($c->dt_exclusao != null) {
+                $cliente->set_dt_exclusao($c->dt_exclusao);
+            }
             $clientes[] = $cliente;
         }
         return $clientes;
@@ -114,6 +120,9 @@ class ClienteDAO
         $cliente = new Cliente();
         $cliente->setAll($c->nome, $c->endereco, $c->telefone, $c->cpf, $c->dt_nascimento, $c->email, $c->senha);
         $cliente->set_id_cliente($c->id_cliente);
+        if ($c->dt_exclusao != null) {
+            $cliente->set_dt_exclusao($c->dt_exclusao);
+        }
         return $cliente;
     }
 
@@ -121,18 +130,18 @@ class ClienteDAO
     {
         $cliente = ($this)->getCliente($id);
         $sql = ($this)->con->prepare(
-            "UPDATE FROM clientes SET data_exclusao = :data_exclusao WHERE id_cliente = :id_cliente"
+            "UPDATE clientes SET dt_exclusao = :data_exclusao WHERE id_cliente = :id_cliente;"
         );
         $sql->bindValue(":id_cliente", $id);
         $sql->bindValue(":data_exclusao", conversorData(time()));
         $sql->execute();
-        $sql = ($this)->con->prepare(
-            "DELETE FROM usuarios WHERE login = :login AND senha = :senha AND tipo = :tipo);"
+        $sql2 = ($this)->con->prepare(
+            "DELETE FROM usuarios WHERE login = :login AND senha = :senha AND tipo = :tipo;"
         );
-        $sql->bindValue(":login", $cliente->get_email());
-        $sql->bindValue(":senha", $cliente->get_senha());
-        $sql->bindValue(":tipo", 2);
-        $sql->execute();
+        $sql2->bindValue(":login", $cliente->get_email());
+        $sql2->bindValue(":senha", $cliente->get_senha());
+        $sql2->bindValue(":tipo", 2);
+        $sql2->execute();
     }
 
     public function atualizarCliente(Cliente $cliente)

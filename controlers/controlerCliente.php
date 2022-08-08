@@ -37,7 +37,7 @@ if ($opcao == 1) { //Login
     } else if ($opcao == 8) {
         header('Location:controlerCliente.php?opcao=9');
     }
-} else if ($opcao == 3) { //Atualizar
+} else if ($opcao == 3 || $opcao == 11) { //Atualizar
     $email = strtolower($_REQUEST['pEmail']);
     $senha = strtolower($_REQUEST['pSenha']);
     $cliente = new Cliente();
@@ -55,21 +55,45 @@ if ($opcao == 1) { //Login
     $clienteDao->atualizarCliente($cliente);
     session_start();
     $_SESSION['cliente'] = $cliente;
-    header('Location:controlerCliente.php?opcao=4');
-} else if ($opcao == 4) { //Exibir Um
-    session_start();
-    if (isset($_SESSION['cliente'])) {
-        header('Location:../views/exibirClienteDadosCadastral.php');
-    } else {
-        header('Location:../views/formLogin.php?erro=2');
+    if ($opcao == 3) {
+        header('Location:controlerCliente.php?opcao=4');
+    } else if ($opcao == 11) {
+        header('Location:controlerCliente.php?opcao=9');
     }
-} else if ($opcao == 5) { //Excluir
-    session_start();
-    if (isset($_SESSION['cliente'])) {
-        $clienteDao->excluirCliente($_SESSION['cliente']);
-        header('Location:../controlers/controlerLogin.php?opcao=2');
-    } else {
-        header('Location:../views/formClienteLogin.php?erro=2');
+} else if ($opcao == 4 || $opcao == 10) { //Exibir Um
+    if ($opcao == 4) {
+        session_start();
+        if (isset($_SESSION['cliente'])) {
+            header('Location:../views/exibirClienteDadosCadastral.php');
+        } else {
+            header('Location:../views/formLogin.php?erro=2');
+        }
+    } else if ($opcao == 10) {
+        $id = $_REQUEST['id'];
+        $clienteDao = new ClienteDAO();
+        session_start();
+        $_SESSION['cliente'] = $clienteDao->getCliente($id);
+        header('Location:../views/formClienteAtualizar.php');
+    }
+} else if ($opcao == 5 || $opcao == 12) { //Excluir
+    if ($opcao == 5) {
+        session_start();
+        if (isset($_SESSION['cliente'])) {
+            $cliente = $_SESSION['cliente'];
+            $clienteDao->excluirCliente($cliente->get_id_cliente());
+            header('Location:../controlers/controlerLogin.php?opcao=2');
+        } else {
+            header('Location:../views/formLogin.php?erro=2');
+        }
+    } else if ($opcao == 12) {
+        $id = $_REQUEST['id'];
+        $clienteDao = new ClienteDAO();
+        $clienteDao->excluirCliente($id);
+        session_start();
+        if (isset($_SESSION['cliente'])) {
+            unset($_SESSION['cliente']);
+        }
+        header('Location:controlerCliente.php?opcao=9');
     }
 } else if ($opcao == 7) { //Redirecionamento
     session_start();

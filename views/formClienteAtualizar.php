@@ -18,7 +18,13 @@ $cliente = $_SESSION['cliente'];
         <p>Senha: <input type="text" size="12" name="pSenha" value="<?php echo $cliente->get_senha() ?>">
         <p><input type="submit" value="Atualizar"> <input type="reset" value="Cancelar">
             <input type="hidden" name="pId" value="<?php echo $cliente->get_id_cliente() ?>">
-            <input type="hidden" name="opcao" value="3">
+            <?php
+            if ($_SESSION['logado'] == true && $_SESSION['tipousuario'] == '1') {
+                echo '<input type="hidden" name="opcao" value="11">';
+            } else {
+                echo '<input type="hidden" name="opcao" value="3">';
+            }
+            ?>
     </form>
     <p>
 </div>
