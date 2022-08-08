@@ -13,7 +13,7 @@ class Data
         $novo_disponivel
     ) {
         ($this)->id_servico = $novo_id_servico;
-        ($this)->data_servico = $novo_data_servico;
+        ($this)->data_servico = strtotime(str_replace('/', '-', $novo_data_servico));
         ($this)->disponivel = $novo_disponivel;
     }
 
@@ -45,7 +45,7 @@ class Data
 
     function set_data_servico($novo_data_servico)
     {
-        ($this)->data_servico = $novo_data_servico;
+        ($this)->data_servico = strtotime(str_replace('/', '-', $novo_data_servico));
     }
 
     function get_disponivel()
