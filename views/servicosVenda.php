@@ -45,7 +45,7 @@ $tipoDao = new TipoDAO();
             <tr>
                 <td>
                     <font face="Verdana" size="3" color="red"><b>
-                            <font color="black">Valor: </font><?php echo $servico->get_preco(); ?>
+                            <font color="black">Valor: </font><?php echo $servico->get_valor(); ?>
                         </b></font>
                 </td>
                 <td colspan="2"><?php echo '<a href="../controlers/controlerDiasDisponiveis.php?opcao=1&id=' . $servico->get_id_servico() . '"><img src="imagens/botao_comprar2.png" border="0"></a>' ?></td>

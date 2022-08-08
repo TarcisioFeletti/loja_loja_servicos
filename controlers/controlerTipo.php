@@ -12,11 +12,15 @@ if ($opcao == 1) { //Incluir
     $tipoDao = new TipoDAO();
     $tipoDao->incluir($novo);
     header('Location:controlerTipo.php?opcao=2');
-} else if ($opcao == 2) { //Visualizar
+} else if ($opcao == 2 || $opcao == 6) { //Visualizar
     $tipoDao = new TipoDAO();
     session_start();
     $_SESSION['tipos'] = $tipoDao->getTipos();
-    header('Location:../views/exibirTipos.php');
+    if($opcao == 2){
+        header('Location:../views/exibirTipos.php');
+    }else if($opcao == 6){
+        header('Location:../views/formServico.php');
+    }
 } else if ($opcao == 3) { //Ir para view de Atualizar
     $id = (int)$_REQUEST['id'];
     $tipoDao = new TipoDAO();

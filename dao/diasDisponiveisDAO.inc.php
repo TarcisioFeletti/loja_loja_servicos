@@ -13,12 +13,33 @@ class DiasDisponiveisDAO
 
     public function getAllDiasDisponiveisParaServicoComId($id)
     {
-        $sql = ($this)->con->query("SELECT * FROM dias_disponiveis WHERE id_servico = $id;");
+        $sql = ($this)->con->prepare("SELECT * FROM datas_disponiveis WHERE id_servico = :id;");
+        $sql->bindValue(":id", $id);
+        $sql->execute();
         $dias = array();
         while ($d = $sql->fetch(PDO::FETCH_OBJ)) {
             $dias[] = $d;
         }
         return $dias;
+    }
+
+    public function excluirDatasDoServicoComOId($id)
+    {
+        $sql = ($this)->con->prepare("DELETE FROM datas_disponiveis WHERE id_servico = :id;");
+        $sql->bindValue(":id", $id);
+        $sql->execute();
+    }
+
+    public function insertDatas($datas, $id)
+    {
+        foreach ($datas as $data) {
+            $sql = ($this)->con->prepare("INSERT INTO datas_disponiveis(id_servico, data_servico, disponivel) 
+        VALUES (:id, :dt, :disp)");
+            $sql->bindValue(":id", $id);
+            $sql->bindValue(":dt", $data);
+            $sql->bindValue(":disp", 1);
+            $sql->execute();
+        }
     }
 
     public function getTipo($id)
