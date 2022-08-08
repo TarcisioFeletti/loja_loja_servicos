@@ -15,7 +15,7 @@
 
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">  
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
         <!-- Font Awesome -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -39,30 +39,30 @@
                 <nav>
                         <ul class="menu">
                                 <li><a href="index.php">Home</a></li>
-                                <li><a href="#">Quem somos?</a></li>
-                                <li><a href="../controlers/controlerCliente.php?opcao=">Area dos Clientes</a>
+                                <li><a href="../controlers/controlerCliente.php?opcao=9">Clientes</a>
                                         <ul>
-                                                <li><a href="../controlers/controlerCliente.php?opcao=">Dados Cadastrais</a></li>
-                                                <!--<li><a href="../views/formClienteAtualizar.php">Alterar Dados Cadastrais</a></li>-->
+                                                <li><a href="formClienteCadastro.php">Cadastrar</a></li>
+                                                <li><a href="#">Cadastrar Vários</a>
+                                                <li><a href="../controlers/controlerCliente.php?opcao=9">Consultar Todos</a>
+                                                <li><a href="#">Consultar Paginação</a>
+                                        </ul>
+                                </li>
+                                <li><a href="../controlers/controlerTipo.php?opcao=2">Tipos</a>
+                                        <ul>
+                                                <li><a href="formTipo.php">Cadastrar</a></li>
+                                                <li><a href="#">Cadastrar Vários</a>
+                                                <li><a href="../controlers/controlerTipo.php?opcao=2">Consultar Todos</a>
+                                                <li><a href="#">Consultar Paginação</a>
                                         </ul>
                                 </li>
                                 <li><a href="../controlers/controlerServico.php?opcao=2">Serviços</a>
                                         <ul>
                                                 <li><a href="../controlers/controlerTipo.php?opcao=6">Cadastrar</a></li>
-                                                <li><a href="formTipo.php">Cadastrar Tipo</a></li>
                                                 <li><a href="../controlers/controlerServico.php?opcao=8">Cadastrar Vários</a>
                                                 <li><a href="../controlers/controlerServico.php?opcao=2">Consultar Todos</a>
                                                 <li><a href="../controlers/controlerServico.php?opcao=7">Consultar Paginação</a>
                                         </ul>
                                 </li>
-                                <li><a href="../controlers/controlerServico.php?opcao=6">Vendas</a>
-                                        <ul>
-                                                <li><a href="../controlers/controlerServico.php?opcao=6">Relação de produtos</a></li>
-                                                <li><a href="../controlers/controlerCarrinho.php?opcao=3">Ver carrinho</a></li>
-                                                <li><a href="../controlers/controlerCarrinho.php?opcao=6">Esvaziar carrinho</a></li>
-                                        </ul>
-                                </li>
-                                <li><a href="#">Contato</a></li>
                                 <li><a href="formLogin.php">Login</a></li>
                         </ul>
                 </nav>
