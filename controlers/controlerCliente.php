@@ -27,14 +27,14 @@ if ($opcao == 1) { //Login
         $_REQUEST['pEndereco'],
         $_REQUEST['pTelefone'],
         $_REQUEST['pCpf'],
-        $_REQUEST['pDtNascimento'],
+        $_REQUEST['pData'],
         $email,
         $senha
     );
     $clienteDao->incluirCliente($cliente);
     header('Location:../views/formLogin.php');
 } else if ($opcao == 3) { //Atualizar
-    $email = strtolower($_REQUEST['pLogin']);
+    $email = strtolower($_REQUEST['pEmail']);
     $senha = strtolower($_REQUEST['pSenha']);
     $cliente = new Cliente();
     $cliente->setAll(
@@ -42,11 +42,11 @@ if ($opcao == 1) { //Login
         $_REQUEST['pEndereco'],
         $_REQUEST['pTelefone'],
         $_REQUEST['pCpf'],
-        $_REQUEST['pDtNascimento'],
+        $_REQUEST['pData'],
         $email,
         $senha
     );
-    $cliente->set_cpf($_REQUEST['pId']);
+    $cliente->set_id_cliente($_REQUEST['pId']);
     $clienteDao = new ClienteDAO();
     $clienteDao->atualizarCliente($cliente);
     session_start();

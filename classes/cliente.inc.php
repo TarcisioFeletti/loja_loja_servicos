@@ -11,82 +11,82 @@ class Cliente
     private $senha;
 
     function setAll(
-        $nome,
-        $endereco,
-        $telefone,
-        $cpf,
-        $dt_nascimento,
-        $email,
-        $senha
+        $novo_nome,
+        $novo_endereco,
+        $novo_telefone,
+        $novo_cpf,
+        $novo_dt_nascimento,
+        $novo_email,
+        $novo_senha
     ) {
-        ($this)->nome = $nome;
-        ($this)->endereco = $endereco;
-        ($this)->telefone = $telefone;
-        ($this)->cpf = $cpf;
-        ($this)->dt_nascimento = $dt_nascimento;
-        ($this)->email = $email;
-        ($this)->senha = $senha;
+        ($this)->nome = $novo_nome;
+        ($this)->endereco = $novo_endereco;
+        ($this)->telefone = $novo_telefone;
+        ($this)->cpf = $novo_cpf;
+        ($this)->dt_nascimento = strtotime(str_replace('/', '-', $novo_dt_nascimento));
+        ($this)->email = $novo_email;
+        ($this)->senha = $novo_senha;
     }
 
-    function set_id_cliente($id_cliente)
+    function set_id_cliente($novo_id_cliente)
     {
-        $this->id_cliente = $id_cliente;
+        $this->id_cliente = $novo_id_cliente;
     }
     function get_id_cliente()
     {
         return $this->id_cliente;
     }
-    function set_nome($nome)
+    function set_nome($novo_nome)
     {
-        $this->nome = $nome;
+        $this->nome = $novo_nome;
     }
     function get_nome()
     {
         return $this->nome;
     }
-    function set_endereco($endereco)
+    function set_endereco($novo_endereco)
     {
-        $this->endereco = $endereco;
+        $this->endereco = $novo_endereco;
     }
     function get_endereco()
     {
         return $this->endereco;
     }
-    function set_telefone($telefone)
+    function set_telefone($novo_telefone)
     {
-        $this->telefone = $telefone;
+        $this->telefone = $novo_telefone;
     }
     function get_telefone()
     {
         return $this->telefone;
     }
-    function set_cpf($cpf)
+    function set_cpf($novo_cpf)
     {
-        $this->cpf = $cpf;
+        $this->cpf = $novo_cpf;
     }
     function get_cpf()
     {
         return $this->cpf;
     }
-    function set_dt_nascimento($dt_nascimento)
+    function set_dt_nascimento($novo_dt_nascimento)
     {
-        $this->dt_nascimento = $dt_nascimento;
+        $this->dt_nascimento = strtotime(str_replace('/', '-', $novo_dt_nascimento));
     }
     function get_dt_nascimento()
     {
         return $this->dt_nascimento;
     }
-    function set_email($email)
+    function set_email($novo_email)
     {
-        $this->email = $email;
+        $this->email = $novo_email;
     }
     function get_email()
     {
         return $this->email;
     }
-    function set_senha($senha)
+    function set_senha($novo_senha)
     {
-        $this->senha = $senha;
+        $this->senha = $novo_senha;
     }
     function get_senha()
     {

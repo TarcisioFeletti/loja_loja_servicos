@@ -24,13 +24,17 @@ class ClienteDAO
         $sql->bindValue(':pass', $senha);
         $sql->execute();
         $sql2 = ($this)->con->prepare(
-            "SELECT * FROM usuarios WHERE email = :usr AND senha = :pass"
+            "SELECT * FROM usuarios WHERE login = :usr AND senha = :pass"
         );
         $sql2->bindValue(':usr', $email);
         $sql2->bindValue(':pass', $senha);
         $sql2->execute();
         if ($sql->rowCount() > 0 && $sql2->rowCount() > 0) {
-            return $sql->fetch(PDO::FETCH_OBJ); //DEPOIS IMPLEMENTAR UMA CLASSE CLIENTE E SUBSTITUIR AQUI
+            $c = $sql->fetch(PDO::FETCH_OBJ);
+            $cliente = new Cliente();
+            $cliente->setAll($c->nome, $c->endereco, $c->telefone, $c->cpf, $c->dt_nascimento, $c->email, $c->senha);
+            $cliente->set_id_cliente($c->id_cliente);
+            return $cliente;
         } else {
             return NULL;
         }
@@ -93,7 +97,7 @@ class ClienteDAO
         while ($c = $sql->fetch(PDO::FETCH_OBJ)) {
             $cliente = new Cliente();
             $cliente->setAll($c->nome, $c->endereco, $c->telefone, $c->cpf, $c->dt_nascimento, $c->email, $c->senha);
-            $cliente->set_cpf($c->id_cliente);
+            $cliente->set_id_cliente($c->id_cliente);
             $clientes[] = $cliente;
         }
         return $clientes;
@@ -109,7 +113,7 @@ class ClienteDAO
         $c = $sql->fetch(PDO::FETCH_OBJ);
         $cliente = new Cliente();
         $cliente->setAll($c->nome, $c->endereco, $c->telefone, $c->cpf, $c->dt_nascimento, $c->email, $c->senha);
-        $cliente->set_cpf($c->id_cliente);
+        $cliente->set_id_cliente($c->id_cliente);
         return $cliente;
     }
 
@@ -166,7 +170,7 @@ class ClienteDAO
             WHERE 
             login = :oldlogin AND
             senha = :oldsenha AND
-            tipo = tipo;"
+            tipo = :tipo;"
         );
         $sql->bindValue(":login", $cliente->get_email());
         $sql->bindValue(":senha", $cliente->get_senha());

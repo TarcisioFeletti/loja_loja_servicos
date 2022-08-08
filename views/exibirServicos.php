@@ -1,8 +1,8 @@
 <?php
-require_once 'includes/autenticar.inc.php';
-require_once 'includes/autenticarRestrito.inc.php';
 require_once '../classes/servico.inc.php';
 require_once '../dao/tipoDAO.inc.php';
+require_once 'includes/autenticar.inc.php';
+require_once 'includes/autenticarRestrito.inc.php';
 $servicos = $_SESSION['servicos'];
 $tipoDao = new TipoDAO();
 ?>

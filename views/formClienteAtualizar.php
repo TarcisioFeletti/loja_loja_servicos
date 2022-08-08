@@ -1,8 +1,8 @@
 <?php
-require_once 'includes/autenticar.inc.php';
-require_once 'includes/autenticarMenu.inc.php';
 require_once '../classes/cliente.inc.php';
 require_once '../utils/dataUtil.inc.php';
+require_once 'includes/autenticar.inc.php';
+require_once 'includes/autenticarMenu.inc.php';
 $cliente = $_SESSION['cliente'];
 ?>
 <div class="corpo" align="center" style="line-height: 3em;">
@@ -13,10 +13,11 @@ $cliente = $_SESSION['cliente'];
         <p>Endereço: <input type="text" size="100" name="pEndereco" value="<?php echo $cliente->get_endereco() ?>">
         <p>Telefone: <input type="text" size="12" name="pTelefone" value="<?php echo $cliente->get_telefone() ?>">
         <p>Data de Nascimento: <input type="date" name="pData" value="<?php echo conversorData($cliente->get_dt_nascimento()) ?>">
-        <p>CPF: <input type=" text" size="12" name="pCpf" value="<?php echo $cliente->get_cpf() ?>">
+        <p>CPF: <input type="text" size="12" name="pCpf" value="<?php echo $cliente->get_cpf() ?>">
         <p>E-mail: <input type="text" size="20" name="pEmail" value="<?php echo $cliente->get_email() ?>">
         <p>Senha: <input type="text" size="12" name="pSenha" value="<?php echo $cliente->get_senha() ?>">
         <p><input type="submit" value="Atualizar"> <input type="reset" value="Cancelar">
+            <input type="hidden" name="pId" value="<?php echo $cliente->get_id_cliente() ?>">
             <input type="hidden" name="opcao" value="3">
     </form>
     <p>
