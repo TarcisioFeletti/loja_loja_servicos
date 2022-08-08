@@ -16,6 +16,9 @@ function efetuarLogin($login, $senha)
     $sql->bindValue(':pass', $senha);
     $sql->execute();
     $usuario = $sql->fetch(PDO::FETCH_OBJ);
+    if($usuario == null){
+        return null;
+    }
     return $usuario->tipo;
 }
 
@@ -35,6 +38,8 @@ if ($opcao == 1) {
         $clienteDao = new ClienteDAO();
         $_SESSION['cliente'] = $clienteDao->autenticar($login, $senha);
         header('Location:../views/index.php');
+    }else{
+        header('Location:../views/formLogin.php?erro=1');
     }
 } else if ($opcao == 2) { //logout
     session_start();
