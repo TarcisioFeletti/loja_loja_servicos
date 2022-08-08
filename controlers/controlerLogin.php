@@ -37,4 +37,14 @@ if ($opcao == 1) {
         $_SESSION['cliente'] = $clienteDao->autenticar($login, $senha);
         header('Location:../views/index.php');
     }
+} else if ($opcao == 2) { //logout
+    session_start();
+    if (isset($_SESSION['logado']) && $_SESSION['logado'] == true) {
+        unset($_SESSION['logado']);
+        unset($_SESSION['tipousuario']);
+        if (isset($_SESSION['cliente'])) {
+            unset($_SESSION['cliente']);
+        }
+    }
+    header('Location:../views/formLogin.php');
 }

@@ -8,6 +8,7 @@ require_once 'includes/autenticarMenu.inc.php';
         Login: <input type="text" size="20" name="pLogin">
         <p>Senha: <input type="text" size="10" name="pSenha">
         <p><input type="submit" value="Login"> <input type="reset" value="Cancelar">
+            <input type="hidden" name="opcao" value="1">
     </form>
     <p>
         <?php
