@@ -52,7 +52,8 @@ require_once 'includes/autenticarMenu.inc.php';
                         echo "<td> R$ " . $servicoCarrinho->get_valor() . "</td>";
                         echo "<td> R$ " . $tipo->get_valor() . "</td>";
                         echo "<td> R$ " . $servicoCarrinho->get_valor() + $tipo->get_valor() . "</td>";
-                        echo "<td>". formatarData($servicoCarrinho->get_data())."</td>";
+                        $data = $servicoCarrinho->get_data();
+                        echo "<td>". formatarData(strtotime($data->get_data_servico()))."</td>";
                         echo "<td><a href='../controlers/controlerCarrinho.php?opcao=2&id=" . ($contador - 1) . "'><img src='imagens/rem3.jpg'></a></td>";
                         echo "</tr>";
                     }

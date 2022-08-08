@@ -3,7 +3,7 @@ require_once 'servico.inc.php';
 require_once 'data.inc.php';
 class ServicoCarrinho extends Servico
 {
-    protected $data;
+    protected Data $data;
 
     function __construct(Servico $servico, Data $nova_data)
     {

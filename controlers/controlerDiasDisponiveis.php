@@ -1,5 +1,6 @@
 <?php
 require_once '../dao/diasDisponiveisDAO.inc.php';
+require_once '../classes/data.inc.php';
 $idServico = $_REQUEST['id'];
 $opcao = $_REQUEST['opcao'];
 if($opcao == 1){

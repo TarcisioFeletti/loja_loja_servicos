@@ -1,6 +1,6 @@
 <?php
 require_once 'conexao.inc.php';
-require_once 'data.inc.php';
+require_once '../classes/data.inc.php';
 
 class DiasDisponiveisDAO
 {
