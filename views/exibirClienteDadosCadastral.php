@@ -3,6 +3,7 @@ require_once 'includes/autenticar.inc.php';
 require_once 'includes/autenticarMenu.inc.php';
 require_once '../classes/cliente.inc.php';
 require_once '../utils/dataUtil.inc.php';
+require_once 'includes/iniciarSessao.inc.php';
 $cliente = $_SESSION['cliente'];
 ?>
 <div class="corpo" align="center" style="line-height: 3em;">

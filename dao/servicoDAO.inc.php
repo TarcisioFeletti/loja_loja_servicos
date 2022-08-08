@@ -16,7 +16,7 @@ class ServicoDAO
         ($this)->porPagina = 10; //valor de exibição padrão
     }
 
-    public function incluirVariosServicos()
+    /*public function incluirVariosServicos()
     {
         for ($i = 1; $i <= 100; $i++) {
             $sql = ($this)->con->prepare("INSERT INTO servicos (nome, cod_servico, valor, descricao, id_tipo) 
@@ -29,7 +29,7 @@ class ServicoDAO
             $sql->bindValue(':id_t', $tipoDao->getMaxTipo());
             $sql->execute();
         }
-    }
+    }*/
 
     public function getPagina()
     {
@@ -64,7 +64,7 @@ class ServicoDAO
 
     public function incluirServico(Servico $servico)
     {
-        $sql = ($this)->con->prepare("INSERT INTO lojaweb.servicos(nome, valor, descricao, id_tipo) 
+        $sql = ($this)->con->prepare("INSERT INTO servicos(nome, valor, descricao, id_tipo) 
         VALUES (:nome, :preco, :descricao, :id_tipo)");
         $sql->bindValue(":nome", $servico->get_nome());
         $sql->bindValue(":preco", $servico->get_valor());
@@ -75,13 +75,11 @@ class ServicoDAO
 
     public function getServicos()
     {
-        $sql = ($this)->con->query("SELECT * FROM lojaweb.servicos;");
+        $sql = ($this)->con->query("SELECT * FROM servicos;");
         $servicos = array();
-        //$fabricanteDao = new FabricanteDAO();
         while ($s = $sql->fetch(PDO::FETCH_OBJ)) {
             $servico = new Servico();
             $servico->setAll($s->nome,$s->cod_servico,$s->valor,$s->descricao,$s->id_tipo);
-            //$produto->setAll($p->nome, $p->data_fabricacao, $p->preco, $p->estoque, $p->descricao, $p->referencia, $fabricanteDao->getFabricante($p->cod_fabricante));
             $servico->set_id_servico($s->id_servico);
             $servicos[] = $servico;
         }
@@ -111,7 +109,7 @@ class ServicoDAO
     {
         $sql = ($this)->con->prepare(
             "UPDATE 
-            lojaweb.servicos 
+            servicos 
             SET 
             nome = :nome,
             valor = :preco, 

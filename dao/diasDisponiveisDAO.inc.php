@@ -13,7 +13,7 @@ class DiasDisponiveisDAO
 
     public function getAllDiasDisponiveisParaServicoComId($id)
     {
-        $sql = ($this)->con->query("SELECT * FROM lojaweb.dias_disponiveis WHERE id_servico = $id;");
+        $sql = ($this)->con->query("SELECT * FROM dias_disponiveis WHERE id_servico = $id;");
         $dias = array();
         while ($d = $sql->fetch(PDO::FETCH_OBJ)) {
             $dias[] = $d;
