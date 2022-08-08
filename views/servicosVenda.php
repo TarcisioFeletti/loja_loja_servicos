@@ -19,16 +19,16 @@ $tipoDao = new TipoDAO();
         <?php
         foreach ($servicos as $servico) {
         ?>
-
+            <a href="../controlers/controlerDiasDisponiveis.php?opcao=1&id=<?php echo $servico->get_id_servico()?>">
             <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                 <div class="product-item bg-light mb-4">
                     <div class="product-img position-relative overflow-hidden">
                         <img src="imagens/produtos/<?php echo $servico->get_id_servico(); ?>.jpg" width="200" height="200" border="0">
                     </div>
                     <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href=""> <?php echo $servico->get_nome(); ?> -</a>
-                        <a class="h6 text-decoration-none text-truncate" href=""> <?php echo $servico->get_descricao(); ?> -</a>
-                        <a class="h6 text-decoration-none text-truncate" href=""> <?php echo $tipoDao->getTipo($servico->get_id_tipo())->get_nome(); ?> </a>
+                        <p class="h6 text-decoration-none text-truncate"> <?php echo $servico->get_nome(); ?>
+                        <p class="h6 text-decoration-none text-truncate"> <?php echo $servico->get_descricao(); ?>
+                        <p class="h6 text-decoration-none text-truncate"> <?php echo $tipoDao->getTipo($servico->get_id_tipo())->get_nome(); ?>
                         <div class="d-flex align-items-center justify-content-center mt-2">
                             <h5> R$ <?php echo $servico->get_valor(); ?> </h5>
                         </div>
@@ -42,6 +42,7 @@ $tipoDao = new TipoDAO();
                     </div>
                 </div>
             </div>
+        </a>
 
         <?php
         }

@@ -19,7 +19,6 @@ if (!isset($_REQUEST['id']) || !isset($_SESSION['dias'])) {
             session_start();
         }
         $dias = $_SESSION['dias'];
-        $carrinho = $_SESSION['carrinho'];
         ?>
         <form action="../controlers/controlerCarrinho.php" method="post">
             <?php
@@ -27,20 +26,21 @@ if (!isset($_REQUEST['id']) || !isset($_SESSION['dias'])) {
             $mostrou = false;
             foreach ($dias as $dia) {
                 if (!isset($_SESSION['carrinho'])) {
-                    echo "<p><input type='radio' name='pData' value='" . $count . "'> " . formatarData(strtotime($dia->get_data_servico()));
+                    echo "<p><input type='radio' name='pData' value='" . $count . "'> " . formatarData($dia->get_data_servico());
                     $mostrou = true;
                 } else{
+                    $carrinho = $_SESSION['carrinho'];
                     foreach ($carrinho as $item) {
                         if ($item->get_id_servico() == $idServico) {
                             if ($item->get_data()->get_data_servico() == $dia->get_data_servico()) {
-                                echo "<p><input type='radio' name='pData' value='" . $count . "' disabled> " . formatarData(strtotime($dia->get_data_servico()));
+                                echo "<p><input type='radio' name='pData' value='" . $count . "' disabled> " . formatarData($dia->get_data_servico());
                                 $mostrou = true;
                             }
                         }
                     }
                 }
                 if(!$mostrou){
-                    echo "<p><input type='radio' name='pData' value='" . $count . "'> " . formatarData(strtotime($dia->get_data_servico()));
+                    echo "<p><input type='radio' name='pData' value='" . $count . "'> " . formatarData($dia->get_data_servico());
                 }
                 $count++;
                 $mostrou = false;
