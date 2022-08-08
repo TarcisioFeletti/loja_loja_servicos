@@ -67,20 +67,10 @@ if ($opcao == 1) { //Login
     session_start();
     if (isset($_SESSION['cliente'])) {
         $clienteDao->excluirCliente($_SESSION['cliente']);
-        header('Location:controlerCliente.php?opcao=6');
+        header('Location:../controlers/controlerLogin.php?opcao=2');
     } else {
         header('Location:../views/formClienteLogin.php?erro=2');
     }
-} else if ($opcao == 6) { //Deslogar
-    session_start();
-    if (isset($_SESSION['logado'])) {
-        unset($_SESSION['logado']);
-        unset($_SESSION['tipousuario']);
-        if (isset($_SESSION['cliente'])) {
-            unset($_SESSION['cliente']);
-        }
-    }
-    header('Location:../views/formLogin.php');
 } else if ($opcao == 7) { //Redirecionamento
     session_start();
     if ($_SESSION['logado'] == true && $_SESSION['tipousuario'] == '2') {

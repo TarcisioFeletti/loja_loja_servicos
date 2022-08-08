@@ -15,7 +15,7 @@
 
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">  
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
         <!-- Font Awesome -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -39,7 +39,6 @@
                 <nav>
                         <ul class="menu">
                                 <li><a href="index.php">Home</a></li>
-                                <li><a href="#">Quem somos?</a></li>
                                 <li><a href="../controlers/controlerCliente.php?opcao=4">Area do Cliente</a>
                                         <ul>
                                                 <li><a href="../controlers/controlerCliente.php?opcao=4">Dados Cadastrais</a></li>
@@ -54,7 +53,13 @@
                                         </ul>
                                 </li>
                                 <li><a href="contato.php">Contato</a></li>
-                                <li><a href="formLogin.php">Login</a></li>
+                                <?php
+                                if (isset($_SESSION['logado']) && $_SESSION == true) {
+                                        echo '<li><a href="../controlers/controlerLogin.php?opcao=2">Logout</a></li>';
+                                } else {
+                                        echo '<li><a href="formLogin.php">Login</a></li>';
+                                }
+                                ?>
                         </ul>
                 </nav>
         </div>

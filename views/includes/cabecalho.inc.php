@@ -63,7 +63,7 @@
                                                 <li><a href="../controlers/controlerServico.php?opcao=7">Consultar Paginação</a>
                                         </ul>
                                 </li>
-                                <li><a href="formLogin.php">Login</a></li>
+                                <li><a href="../controlers/controlerLogin.php?opcao=2">Logout</a></li>
                         </ul>
                 </nav>
         </div>
