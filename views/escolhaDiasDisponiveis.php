@@ -34,8 +34,13 @@ if(!isset($_REQUEST['id']) || !isset($_SESSION['dias'])){
         <input type="hidden" name="id" value="<?php echo $idServico ?>">
         <input type="submit" value="Escolher"> <input type="reset" value="Limpar">
     </form>
-    </div>
 <?php
+if(isset($_REQUEST['erro'])){
+    if($_REQUEST['erro'] == 1){
+        echo "<font color = 'red'><p>Escolha uma data</p></font>";
+    }       
+}
+echo "</div>";
 }
 require_once 'includes/rodape.inc.php';
 ?>

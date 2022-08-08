@@ -9,33 +9,38 @@ $opcao = (int)$_REQUEST['opcao'];
 
 if ($opcao == 1) { //incluir do carrinho
     $id = (int)$_REQUEST['id'];
-    $data = $_REQUEST['pData'];
-    $diasDao = new DiasDisponiveisDAO();
-    $diasDao->setIndisponivel($data, $id);
-    $servicoDao = new ServicoDAO();
-    $servico = $servicoDao->getServico($id);
-    $servicoCarrinho = new ServicoCarrinho($servico, $data);
-    session_start();
-    if (!isset($_SESSION['carrinho'])) {
-        $carrinho = array();
+    if (!isset($_REQUEST['pData'])) {
+        header("Location:../views/escolhaDiasDisponiveis.php?id=$id&erro=1");
     } else {
-        $carrinho = $_SESSION['carrinho'];
-        foreach ($carrinho as $itemCarrinho) {
-            if ($servico->get_id_servico() == $itemCarrinho->get_id_servico()) {
-                header('Location:../views/exibirCarrinho.php?erro=1');
+        $data = $_REQUEST['pData'];
+        var_dump($data);
+        $diasDao = new DiasDisponiveisDAO();
+        //$diasDao->setIndisponivel($data, $id);
+        $servicoDao = new ServicoDAO();
+        $servico = $servicoDao->getServico($id);
+        $servicoCarrinho = new ServicoCarrinho($servico, $data);
+        session_start();
+        if (!isset($_SESSION['carrinho'])) {
+            $carrinho = array();
+        } else {
+            $carrinho = $_SESSION['carrinho'];
+            foreach ($carrinho as $itemCarrinho) {
+                if ($servico->get_id_servico() == $itemCarrinho->get_id_servico()) {
+                    header('Location:../views/exibirCarrinho.php?erro=1');
+                }
             }
         }
+        $carrinho[] = $servicoCarrinho;
+        sort($carrinho);
+        $_SESSION['carrinho'] = $carrinho;
+        header('Location:../views/exibirCarrinho.php'); //adiciona no carrinho
     }
-    $carrinho[] = $servicoCarrinho;
-    sort($carrinho);
-    $_SESSION['carrinho'] = $carrinho;
-    header('Location:../views/exibirCarrinho.php'); //adiciona no carrinho
 } else if ($opcao == 2) { //remover do carrinho
     $index = (int)$_REQUEST['id'];
     session_start();
     $carrinho = $_SESSION['carrinho'];
     $diasDao = new DiasDisponiveisDAO();
-    $diasDao->setDisponivel(conversorData($carrinho[$index]->get_data()), $carrinho[$index]->get_id_servico());
+    //$diasDao->setDisponivel(conversorData($carrinho[$index]->get_data()), $carrinho[$index]->get_id_servico());
     unset($carrinho[$index]);
     sort($carrinho);
     $_SESSION['carrinho'] = $carrinho;
