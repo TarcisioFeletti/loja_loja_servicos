@@ -8,9 +8,9 @@ $tipos = $_SESSION['tipos'];
     <h2>Cadastro de Serviço</h2>
     <p>
     <form action="../controlers/controlerServico.php" method="post" enctype="multipart/form-data">
-        Nome: <input type="text" size="50" name="pNome">
+        <p>Nome: <input type="text" size="50%" name="pNome">
         <p>Valor: <input type="number" min="0" name="pValor">
-        <p>Descrição: <input type="text" size="250" name="pDescricao">
+        <p>Descrição: <input type="text" size="90%" name="pDescricao">
         <p>Tipo:
             <select name="pTipo">
                 <option value="()">-</option>>

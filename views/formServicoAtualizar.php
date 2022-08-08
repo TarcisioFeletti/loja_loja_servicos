@@ -3,18 +3,19 @@ require_once '../classes/servico.inc.php';
 require_once '../classes/tipo.inc.php';
 require_once 'includes/autenticar.inc.php';
 require_once 'includes/autenticarRestrito.inc.php';
+require_once '../utils/dataUtil.inc.php';
 $servico = $_SESSION['servico'];
 $tipos = $_SESSION['tipos'];
-$dats = $_SESSION['datas'];
+$datas = $_SESSION['datas'];
 ?>
 <div class="corpo" align="center" style="line-height: 3em;">
     <h2>Alteração de Serviço</h2>
     <p>
     <form action="../controlers/controlerServico.php" method="post">
-        ID: <input type="text" size="20" name="pId" value="<?php echo $servico->get_id_servico() ?>" readonly>
-        <p>Nome: <input type="text" size="50" name="pNome" value="<?php echo $servico->get_nome() ?>">
+        <p>ID: <input type="text" size="20%" name="pId" value="<?php echo $servico->get_id_servico() ?>" readonly>
+        <p>Nome: <input type="text" size="50%" name="pNome" value="<?php echo $servico->get_nome() ?>">
         <p>Preço: <input type="number" min="0" name="pValor" value="<?php echo $servico->get_valor() ?>">
-        <p>Descrição: <input type="text" size="250" name="pDescricao" value="<?php echo $servico->get_descricao() ?>">
+        <p>Descrição: <input type="text" size="90%" name="pDescricao" value="<?php echo $servico->get_descricao() ?>">
         <p>Tipo:
             <select name="pTipo">
                 <?php
@@ -31,7 +32,11 @@ $dats = $_SESSION['datas'];
             <?php
             $count = 1;
             foreach ($datas as $data) {
-                echo "<input type='date' name='pData" . $count . "' value='" . formatarData($data->data_servico) . "'>";
+                echo "<input type='date' name='pData" . $count . "' value='" . conversorData(strtotime($data->data_servico)) . "'>";
+                $count++;
+            }
+            for ($i = $count; $i <= 7; $i++) {
+                echo "<input type='date' name='pData" . $count . "'>";
                 $count++;
             }
             ?>
