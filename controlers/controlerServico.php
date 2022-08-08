@@ -68,6 +68,8 @@ if ($opcao == 1) { //inclusão
     $_SESSION['servico'] = $servico;
     $tipoDao = new TipoDAO();
     $_SESSION['tipos'] = $tipoDao->getTipos();
+    $diasDao = new DiasDisponiveisDAO();
+    $_SESSION['datas'] = $diasDao->getAllDiasDisponiveisParaServicoComId($servico->get_id_servico());
     header("Location:../views/formServicoAtualizar.php"); //Verificar se vai usar essa controler mesmo
 } else if ($opcao == 4) {
     $id = (int)$_REQUEST['id'];
@@ -80,7 +82,14 @@ if ($opcao == 1) { //inclusão
     $servico->setAll($_REQUEST['pNome'], $_REQUEST['pValor'], $_REQUEST['pDescricao'], $_REQUEST['pTipo']);
     $servico->set_id_servico($_REQUEST['pId']);
     $servicoDao = new ServicoDAO();
-    $servicoDao->atualizarProduto($servico);
+    $servicoDao->atualizarServico($servico);
+    $datas = array();
+    for ($i = 1; $i <= 7; $i++) {
+        if (!empty($_REQUEST['pData' . $i])) {
+            $datas[] = $_REQUEST['pData' . $i];
+        }
+    }
+    $diasDao->atualizarDatas($datas, $servico->get_id_servico());
     header('Location:controlerServico.php?opcao=2');
 } else if ($opcao == 7) {
     $pagina = (int)$_REQUEST['pagina'];

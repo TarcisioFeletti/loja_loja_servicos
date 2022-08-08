@@ -116,7 +116,7 @@ class ServicoDAO
         return $s->maior;
     }
 
-    public function atualizarProduto(Servico $servico)
+    public function atualizarServico(Servico $servico)
     {
         $sql = ($this)->con->prepare(
             "UPDATE 

@@ -5,6 +5,7 @@ require_once 'includes/autenticar.inc.php';
 require_once 'includes/autenticarRestrito.inc.php';
 $servico = $_SESSION['servico'];
 $tipos = $_SESSION['tipos'];
+$dats = $_SESSION['datas'];
 ?>
 <div class="corpo" align="center" style="line-height: 3em;">
     <h2>Alteração de Serviço</h2>
@@ -26,6 +27,14 @@ $tipos = $_SESSION['tipos'];
                 }
                 ?>
             </select>
+        <p>Datas:
+            <?php
+            $count = 1;
+            foreach ($datas as $data) {
+                echo "<input type='date' name='pData" . $count . "' value='" . formatarData($data->data_servico) . "'>";
+                $count++;
+            }
+            ?>
         <p><input type="submit" value="Atualizar"> <input type="reset" value="Limpar">
             <input type="hidden" name="opcao" value="5">
     </form>

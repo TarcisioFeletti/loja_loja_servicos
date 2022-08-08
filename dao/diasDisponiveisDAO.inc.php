@@ -42,6 +42,20 @@ class DiasDisponiveisDAO
         }
     }
 
+    public function atualizarDatas($datas, $id)
+    {
+        $sql = ($this)->con->prepare(
+            "DELETE 
+            FROM
+            datas_disponiveis 
+            WHERE 
+            id_servico= :id"
+        );
+        $sql->bindValue(":id", $id);
+        $sql->execute();
+        $this->insertDatas($datas, $id);
+    }
+
     public function getTipo($id)
     {
         $sql = ($this)->con->prepare("SELECT nome FROM tipo WHERE id_tipo = :id");
