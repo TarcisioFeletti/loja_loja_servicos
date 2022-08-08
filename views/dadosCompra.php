@@ -4,6 +4,7 @@ require_once 'includes/autenticarMenu.inc.php';
 require_once '../classes/servico.inc.php';
 require_once '../classes/cliente.inc.php';
 require_once '../dao/tipoDAO.inc.php';
+require_once '../utils/dataUtil.inc.php';
 ?>
 <div class="corpo" align="center" style="line-height: 3cm;">
     <h1>Finalizar Compra</h1>
@@ -46,7 +47,7 @@ require_once '../dao/tipoDAO.inc.php';
                 echo "<td>" . $servicoCarrinho->get_nome() . "</td>";
                 echo "<td>" . $tipo->get_nome() . "</td>";
                 echo "<td> R$ " . $servicoCarrinho->get_valor() + $tipo->get_valor() . "</td>";
-                echo "<td> DATA </td>"; //DATA
+                echo "<td>". formatarData($servicoCarrinho->get_data()) ."</td>";
                 echo "</tr>";
             }
             echo "<tr align='center'>";

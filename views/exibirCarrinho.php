@@ -54,7 +54,7 @@ require_once '../dao/tipoDAO.inc.php';
                         echo "<td> R$ " . $servicoCarrinho->get_valor() . "</td>";
                         echo "<td> R$ " . $tipo->get_valor() . "</td>";
                         echo "<td> R$ " . $servicoCarrinho->get_valor() + $tipo->get_valor() . "</td>";
-                        echo "<td>". formatarData($servicoCarrinho->get_data())."</td>"; //data aqui!
+                        echo "<td>". formatarData($servicoCarrinho->get_data())."</td>";
                         echo "<td><a href='../controlers/controlerCarrinho.php?opcao=2&id=" . ($contador - 1) . "'><img src='imagens/rem3.jpg'></a></td>";
                         echo "</tr>";
                     }
