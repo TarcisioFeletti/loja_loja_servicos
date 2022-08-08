@@ -1,6 +1,8 @@
 <?php
 require_once '../classes/servico.inc.php';
 require_once '../classes/cliente.inc.php';
+require_once '../classes/data.inc.php';
+require_once '../classes/servicoCarrinho.inc.php';
 require_once '../dao/tipoDAO.inc.php';
 require_once '../utils/dataUtil.inc.php';
 require_once 'includes/autenticar.inc.php';
@@ -47,7 +49,7 @@ require_once 'includes/autenticarMenu.inc.php';
                 echo "<td>" . $servicoCarrinho->get_nome() . "</td>";
                 echo "<td>" . $tipo->get_nome() . "</td>";
                 echo "<td> R$ " . $servicoCarrinho->get_valor() + $tipo->get_valor() . "</td>";
-                echo "<td>". formatarData($servicoCarrinho->get_data()) ."</td>";
+                echo "<td>" . formatarData($servicoCarrinho->get_data()->get_data_servico()) . "</td>";
                 echo "</tr>";
             }
             echo "<tr align='center'>";

@@ -22,6 +22,8 @@ require_once 'includes/autenticarMenu.inc.php';
             if (isset($_REQUEST['erro'])) {
                 if ((int)($_REQUEST['erro']) == "1") {
                     echo "<b><font face='Verdana' size='2' color='red'>O serviço já existe no carrinho!</font></b>";
+                } else if ((int)($_REQUEST['erro']) == "2") {
+                    echo "<b><font face='Verdana' size='2' color='red'>Não se pode ter mais que 5 serviços no carrinho!</font></b>";
                 }
             }
         ?>
@@ -53,7 +55,7 @@ require_once 'includes/autenticarMenu.inc.php';
                         echo "<td> R$ " . $tipo->get_valor() . "</td>";
                         echo "<td> R$ " . $servicoCarrinho->get_valor() + $tipo->get_valor() . "</td>";
                         $data = $servicoCarrinho->get_data();
-                        echo "<td>". formatarData($data->get_data_servico())."</td>";
+                        echo "<td>" . formatarData($data->get_data_servico()) . "</td>";
                         echo "<td><a href='../controlers/controlerCarrinho.php?opcao=2&id=" . ($contador - 1) . "'><img src='imagens/rem3.jpg'></a></td>";
                         echo "</tr>";
                     }

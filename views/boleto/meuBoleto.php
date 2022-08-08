@@ -1,6 +1,6 @@
 <?php
-
 require 'autoloader.php';
+require_once '../../classes/cliente.inc.php';
 session_start();
 $cliente = $_SESSION['cliente'];
 $total = $_SESSION['total'];
@@ -8,8 +8,8 @@ $total = $_SESSION['total'];
 use OpenBoleto\Banco\BancoDoBrasil;
 use OpenBoleto\Agente;
 
-$sacado = new Agente($cliente->nome, $cliente->cpf, $cliente->logradouro, $cliente->cep, $cliente->cidade, $cliente->estado);
-$cedente = new Agente('Comércio Eletrônico Desweb LTDA', '02.123.123/0001-11', 'Rua Principal 400 Lj 23', '29500-000', 'Alegre', 'ES');
+$sacado = new Agente($cliente->get_nome(), $cliente->get_cpf(), $cliente->get_endereco());
+$cedente = new Agente('TLD Serviços LTDA', '02.123.123/0001-11', 'Rua Principal 400 Lj 23', '29500-000', 'Alegre', 'ES');
 
 $boleto = new BancoDoBrasil(array(
     // Parâmetros obrigatórios

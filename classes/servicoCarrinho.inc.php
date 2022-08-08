@@ -13,7 +13,6 @@ class ServicoCarrinho extends Servico
         ($this)->valor = $servico->get_valor();
         ($this)->descricao = $servico->get_descricao();
         ($this)->id_tipo = $servico->get_id_tipo();
-        ($this)->data = $nova_data;
         ($this)->data = new Data();
         ($this)->data->setAll($nova_data->get_id_servico(), conversorData($nova_data->get_data_servico()), $nova_data->get_disponivel());
     }
@@ -26,7 +25,7 @@ class ServicoCarrinho extends Servico
 
     function set_data($nova_data)
     {
-        ($this)->data = strtotime(str_replace('/', '-', $nova_data));
+        //($this)->data = strtotime(str_replace('/', '-', $nova_data)); //ERRADO!!!
     }
 }
 ?>
