@@ -9,7 +9,7 @@ require_once 'includes/autenticarMenu.inc.php';
             session_start();
         }
         if ($_SESSION['logado'] == true && $_SESSION['tipousuario'] == 2) {
-            echo "<p>Você já está logado! Deseja <a href='../controlers/controlerCliente.php?opcao=6'>sair</a>?";
+            echo "<p>Você já está logado! Deseja <a href='../controlers/controlerLogin.php?opcao=2'>sair</a>?";
         } else {
         ?>
     <form action="../controlers/controlerCliente.php" method="post" enctype="multipart/form-data>">
