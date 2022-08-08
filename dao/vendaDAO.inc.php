@@ -2,7 +2,10 @@
 require_once 'conexao.inc.php';
 require_once '../utils/dataUtil.inc.php';
 require_once '../classes/venda.inc.php';
-require_once '../classes/produto.inc.php';
+require_once '../classes/cliente.inc.php';
+require_once '../classes/servico.inc.php';
+require_once '../classes/servicoCarrinho.inc.php';
+require_once '../dao/diasDisponiveisDAO.inc.php';
 
 class VendaDAO
 {
@@ -16,7 +19,15 @@ class VendaDAO
 
     public function incluirVenda($venda, $carrinho)
     {
-        $sql = ($this)->con->prepare('INSERT INTO vendas (id_cliente, valor_total) VALUES (:cli, :vt)');
+        $sql = ($this)->con->prepare(
+            'INSERT INTO vendas (
+                id_cliente, 
+                valor_total
+                ) VALUES (
+                :cli, 
+                :vt
+                )'
+        );
         $sql->bindValue(':cli', $venda->get_id_cliente());
         $sql->bindValue(':vt', $venda->get_valor_total());
         $sql->execute();
@@ -26,30 +37,29 @@ class VendaDAO
 
     function incluirItens($idVenda, $carrinho)
     {
-        $cont = ($this)->getMax() + 1;
         foreach ($carrinho as $item) {
-            $sql = ($this)->con->prepare('INSERT INTO itens (id_item, id_produto, quantidade, valorTotal, id_venda) VALUES (:idItem, :idProd, :quant, :vt, :idVenda)');
-            $sql->bindValue(":idItem", $cont);
-            $sql->bindValue(":idProd", $item->get_produto_id());
-            $sql->bindValue(":quant", 1);
-            $sql->bindValue(":vt", $item->get_preco());
-            $sql->bindValue(":idVenda", $idVenda);
+            $sql = ($this)->con->prepare(
+                'INSERT INTO item_venda (
+                    id_servico, 
+                    id_venda
+                    ) VALUES (
+                    :id_servico, 
+                    :id_venda
+                )'
+            );
+            $sql->bindValue(":id_servico", $item->get_id_servico());
+            $sql->bindValue(":id_venda", $idVenda);
             $sql->execute();
-            $cont++;
+            $dataDao = new DiasDisponiveisDAO();
+            $dataDao->setIndisponivel($item->get_data()->get_data_servico(), $item->get_id_servico());
         }
     }
 
     function getIdVenda()
     { //retorna o ultimo idvenda na tabela
-        $sql = ($this)->con->query('SELECT MAX(id_venda) AS maior FROM vendas');
-        $sql->execute();
-        $row = $sql->fetch(PDO::FETCH_OBJ);
-        return $row->maior;
-    }
-
-    function getMax()
-    { //retorna o ultimo idvenda na tabela
-        $sql = ($this)->con->query('SELECT MAX(id_item) AS maior FROM itens');
+        $sql = ($this)->con->query(
+            'SELECT MAX(id_venda) AS maior FROM vendas'
+        );
         $sql->execute();
         $row = $sql->fetch(PDO::FETCH_OBJ);
         return $row->maior;

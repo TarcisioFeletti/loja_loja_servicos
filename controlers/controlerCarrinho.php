@@ -11,6 +11,10 @@ if ($opcao == 1) { //incluir do carrinho
     $id = (int)$_REQUEST['id'];
     if (!isset($_REQUEST['pData'])) {
         header("Location:../views/escolhaDiasDisponiveis.php?id=$id&erro=1");
+    } else if (isset($_SESSION['carrinho'])) {
+        if (strlen($_SESSION['carrinho']) == 5) {
+            header('Location:../views/exibirCarrinho.php?erro=2');
+        }
     } else {
         $index = $_REQUEST['pData'];
         if (session_status() == PHP_SESSION_NONE) {
@@ -43,7 +47,6 @@ if ($opcao == 1) { //incluir do carrinho
     session_start();
     $carrinho = $_SESSION['carrinho'];
     $diasDao = new DiasDisponiveisDAO();
-    //$diasDao->setDisponivel(conversorData($carrinho[$index]->get_data()), $carrinho[$index]->get_id_servico());
     unset($carrinho[$index]);
     if (sizeof($carrinho) == 0) {
         unset($carrinho);
@@ -62,11 +65,11 @@ if ($opcao == 1) { //incluir do carrinho
 } else if ($opcao == 4) {
     session_start();
     if (!isset($_SESSION['carrinho'])) {
-        //erro de carrinho vazio
+        header("Location:../views/exibirCarrinho.php?status=1");
     } else {
         $total = $_REQUEST['total'];
         $_SESSION['total'] = $total;
-        header('Location:../controlers/controlerClienteLogin.php?opcao=7');
+        header('Location:../controlers/controlerCliente.php?opcao=7');
     }
 } else if ($opcao == 5) { //Esvaziar Carrinho
     session_start();
