@@ -64,7 +64,6 @@ class DiasDisponiveisDAO
 
         $tipo = $sql->fetch(PDO::FETCH_OBJ);
 
-        //var_dump($fab);
         return $tipo->nome;
     }
 
@@ -74,7 +73,38 @@ class DiasDisponiveisDAO
 
         $tipo = $sql->fetch(PDO::FETCH_OBJ);
 
-        //var_dump($fab);
         return $tipo->nome;
+    }
+
+    public function setIndisponivel($data, $idServico){
+        $sql = ($this)->con->prepare(
+            "UPDATE
+            datas_disponiveis 
+            SET
+            disponivel = 0
+            WHERE 
+            id_servico = :id
+            AND
+            data_servico = :dt"
+        );
+        $sql->bindValue(":id", $idServico);
+        $sql->bindValue(":dt", $data);
+        $sql->execute();
+    }
+
+    public function setDisponivel($data, $idServico){
+        $sql = ($this)->con->prepare(
+            "UPDATE
+            datas_disponiveis 
+            SET
+            disponivel = 1
+            WHERE 
+            id_servico = :id
+            AND
+            data_servico = :dt"
+        );
+        $sql->bindValue(":id", $idServico);
+        $sql->bindValue(":dt", $data);
+        $sql->execute();
     }
 }
