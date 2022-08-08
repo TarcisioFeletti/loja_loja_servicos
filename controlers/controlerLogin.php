@@ -16,11 +16,10 @@ function efetuarLogin($login, $senha)
     $sql->bindValue(':pass', $senha);
     $sql->execute();
     $usuario = $sql->fetch(PDO::FETCH_OBJ);
-    return $usuario;
+    return $usuario->tipo;
 }
 
 if ($opcao == 1) {
-    $tipo = $_REQUEST['pTipo'];
     $login = $_REQUEST['pLogin'];
     $senha = $_REQUEST['pSenha'];
     $logado = efetuarLogin($login, $senha);

@@ -1,5 +1,6 @@
 <?php
 require_once 'conexao.inc.php';
+require_once 'data.inc.php';
 
 class DiasDisponiveisDAO
 {
@@ -18,9 +19,25 @@ class DiasDisponiveisDAO
         $sql->execute();
         $dias = array();
         while ($d = $sql->fetch(PDO::FETCH_OBJ)) {
-            $dias[] = $d;
+            $data = new Data();
+            $data->setAll($d->id_servico, $d->data_servico, $d->disponivel);
+            $data->set_id_disponibilidade($d->id_disponibilidade);
+            $dias[] = $data;
         }
         return $dias;
+    }
+
+    public function getData($data, $id)
+    {
+        $sql = ($this)->con->prepare("SELECT * FROM datas_disponiveis WHERE id_servico = :id AND data_servico = :dt;");
+        $sql->bindValue(":id", $id);
+        $sql->bindValue(":dt", $data);
+        $sql->execute();
+        $data = new Data();
+        $d = $sql->fetch(PDO::FETCH_OBJ);
+        $data->setAll($d->id_servico, $d->data_servico, $d->disponivel);
+        $data->set_id_disponibilidade($d->id_disponibilidade);
+        return $sql->fetch;
     }
 
     public function excluirDatasDoServicoComOId($id)
