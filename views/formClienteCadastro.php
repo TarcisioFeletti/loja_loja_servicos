@@ -18,7 +18,7 @@ require_once 'includes/autenticarMenu.inc.php';
         <p>Telefone: <input type="text" size="20" name="pTelefone">
         <p>CPF: <input type=" text" size="13" name="pCpf">
         <p>Data de Nascimento: <input type="date" name="pData">
-        <p>E-mail: <input type="text" size="20" name="pEmail">
+        <p>E-mail: <input type="text" size="20" name="pLogin">
         <p>Senha: <input type="password" size="8" name="pSenha">
         <p><input type="submit" value="Cadastrar"> <input type="reset" value="Cancelar">
             <?php
