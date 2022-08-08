@@ -1,11 +1,9 @@
 <?php
-require_once 'includes/autenticarMenu.inc.php';
-require_once 'includes/iniciarSessao.inc.php';
-if(!isset($_REQUEST['carrinho'])){
-    echo "<div class='corpo' align='center' style='line-height: 3cm;''>";
-    echo "<h2><b>Carrinho vazio!</b></h2></div>";
-}else{
+require_once '../utils/dataUtil.inc.php';
 require_once '../dao/tipoDAO.inc.php';
+require_once '../classes/tipo.inc.php';
+require_once '../classes/servicoCarrinho.inc.php';
+require_once 'includes/autenticarMenu.inc.php';
 ?>
 <div class="corpo" align="center" style="line-height: 3cm;">
     <h1>Carrinho de Compras</h1>
@@ -66,12 +64,11 @@ require_once '../dao/tipoDAO.inc.php';
                 </table>
             </font>
         <?php
-            echo "<a href='produtosVenda.php'><img src='imagens/botao_continuar_comprando.png'></a>";
+            echo "<a href='servicosVenda.php'><img src='imagens/botao_continuar_comprando.png'></a>";
             echo "<a href='../controlers/controlerCarrinho.php?opcao=4&total=" . $total . "'><img src='imagens/finalizarCompra.png'></a>";
         }
         ?>
 </div>
 <?php
-}
 require_once '../views/includes/rodape.inc.php';
 ?>

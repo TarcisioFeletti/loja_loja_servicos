@@ -3,6 +3,8 @@ require_once '../dao/conexao.inc.php';
 require_once '../classes/cliente.inc.php';
 require_once '../dao/clienteDAO.inc.php';
 
+$opcao = $_REQUEST['opcao'];
+
 function efetuarLogin($login, $senha)
 {
     $con = new Conexao();
@@ -13,29 +15,21 @@ function efetuarLogin($login, $senha)
     $sql->bindValue(':usr', $login);
     $sql->bindValue(':pass', $senha);
     $sql->execute();
-    $count = $sql->rowCount();
-    if ($count == 1) {
-        return true;
-    } else {
-        return false;
-    }
+    $usuario = $sql->fetch(PDO::FETCH_OBJ);
+    return $usuario;
 }
 
-$tipo = $_REQUEST['pTipo'];
-$login = $_REQUEST['pLogin'];
-$senha = $_REQUEST['pSenha'];
-
-if ($tipo == "1") {
+if ($opcao == 1) {
+    $tipo = $_REQUEST['pTipo'];
+    $login = $_REQUEST['pLogin'];
+    $senha = $_REQUEST['pSenha'];
     $logado = efetuarLogin($login, $senha);
-    if ($logado) {
+    if ($logado == "1") {
         session_start();
         $_SESSION['logado'] = true;
         $_SESSION['tipousuario'] = '1';
         header('Location:../views/index.php');
-    }
-} else if ($tipo == "2") {
-    $logado = efetuarLogin($login, $senha);
-    if ($logado) {
+    } else if ($logado == "2") {
         session_start();
         $_SESSION['logado'] = true;
         $_SESSION['tipousuario'] = '2';

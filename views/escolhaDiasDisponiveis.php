@@ -1,4 +1,3 @@
-<div class="container-fluid pt-5" align="center">
 <?php
 require_once 'includes/autenticarMenu.inc.php';
 require_once '../utils/dataUtil.inc.php';
@@ -8,7 +7,7 @@ if(!isset($_REQUEST['id']) || !isset($_SESSION['dias'])){
     echo "<h3>Retorne para a página <a href='index.php'>principal</a> </h3>";
 }else{
 ?>
-
+    <div class="container-fluid pt-5" align="center">
     <h1> Dias disponíveis</h1>
     <p>
     <p>
@@ -20,17 +19,23 @@ if(!isset($_REQUEST['id']) || !isset($_SESSION['dias'])){
     }
     $dias = $_SESSION['dias'];
     ?>
-    <form action="../controlers/controlerCarrinho.php?opcao=1&id=<?php echo $idServico;?>" method="post">
+    <form action="../controlers/controlerCarrinho.php" method="post">
         <?php
         foreach ($dias as $dia) {
-            echo "<input type='radio' name='pData' value='".formatarData($dia)."'> " . formatarData($dia);
+            if($dia->disponivel){
+            echo "<p><input type='radio' name='pData' value='". $dia->data_servico ."'> " . formatarData(strtotime($dia->data_servico));
+            }else{
+                echo "<p><input type='radio' name='pData' value='". $dia->data_servico ."' disabled> " . formatarData(strtotime($dia->data_servico));
+            }
         }
         ?>
+        <br>
+        <input type="hidden" name="opcao" value="1">
+        <input type="hidden" name="id" value="<?php echo $idServico ?>">
         <input type="submit" value="Escolher"> <input type="reset" value="Limpar">
     </form>
+    </div>
 <?php
 }
-echo "</div>";
-
 require_once 'includes/rodape.inc.php';
 ?>

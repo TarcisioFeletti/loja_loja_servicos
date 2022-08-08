@@ -7,11 +7,6 @@ require_once 'includes/autenticarMenu.inc.php';
     <form action="../controlers/controlerLogin.php" method="get">
         Login: <input type="text" size="20" name="pLogin">
         <p>Senha: <input type="text" size="10" name="pSenha">
-        <p>Tipo de Usuário:
-            <select name="pTipo">
-                <option value="1">Administrador</option>>
-                <option value="2">Cliente</option>
-            </select>
         <p><input type="submit" value="Login"> <input type="reset" value="Cancelar">
     </form>
     <p>

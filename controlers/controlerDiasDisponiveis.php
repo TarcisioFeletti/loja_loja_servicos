@@ -1,5 +1,4 @@
 <?php
-require_once 'includes/autenticarMenu.inc.php';
 require_once '../dao/diasDisponiveisDAO.inc.php';
 $idServico = $_REQUEST['id'];
 $opcao = $_REQUEST['opcao'];
@@ -12,8 +11,4 @@ if($opcao == 1){
     header("Location:../views/escolhaDiasDisponiveis.php?id=$idServico");
 }
 
-?>
-
-<?php
-require_once 'includes/rodape.inc.php';
 ?>
