@@ -1,6 +1,7 @@
 <?php
 require_once 'servico.inc.php';
 require_once 'data.inc.php';
+require_once '../utils/dataUtil.inc.php';
 class ServicoCarrinho extends Servico
 {
     protected Data $data;
@@ -13,6 +14,8 @@ class ServicoCarrinho extends Servico
         ($this)->descricao = $servico->get_descricao();
         ($this)->id_tipo = $servico->get_id_tipo();
         ($this)->data = $nova_data;
+        ($this)->data = new Data();
+        ($this)->data->setAll($nova_data->get_id_servico(), conversorData($nova_data->get_data_servico()), $nova_data->get_disponivel());
     }
 
     //getters and setters
