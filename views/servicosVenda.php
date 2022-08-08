@@ -8,56 +8,47 @@ if (session_status() == PHP_SESSION_NONE) {
 $servicos = $_SESSION['servicos'];
 $tipoDao = new TipoDAO();
 ?>
-<div class="corpo" align="center" style="line-height: 3em;">
-    <h1>Relação de Serviços</h1>
-    <p>
-    <div class='carrinho' align='right'>
-        <a href="../controlers/controlerCarrinho.php?opcao=3"><img src="imagens/meu-carrinho.png"></a>
-    </div>
-    <?php
-    foreach ($servicos as $servico) {
-    ?>
-        <table border="0" width="30%" cellspacing="10">
-            <tr>
-                <td rowspan="5" align="center">
-                    <img src="imagens/produtos/<?php echo $servico->get_id_servico(); ?>.jpg" width="200" height="200" border="0">
-                </td>
-            </tr>
-            <tr align="left">
-                <font face="Verdana" size="3">
-                    <td colspan="2"><b><?php echo $servico->get_nome(); ?></b></td>
-                </font>
-            </tr>
-            <tr>
-                <td style="text-align:justify" colspan="2">
-                    <font face="Verdana" size="2"><?php echo $servico->get_descricao(); ?></font>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <font face="Verdana" size="2">
-                        <?php
-                        echo $tipoDao->getTipo($servico->get_id_tipo())->get_nome();
-                        ?>
-                    </font>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <font face="Verdana" size="3" color="red"><b>
-                            <font color="black">Valor: </font><?php echo $servico->get_valor(); ?>
-                        </b></font>
-                </td>
-                <td colspan="2"><?php echo '<a href="../controlers/controlerDiasDisponiveis.php?opcao=1&id=' . $servico->get_id_servico() . '"><img src="imagens/botao_comprar2.png" border="0"></a>' ?></td>
-            </tr>
-        </table>
-        <p>
-            <hr width="30%">
-        <p>
-        <?php
-    }
-        ?>
+
+<h1>Relação de Serviços</h1>
+<p>
+<div class='carrinho' align='right'>
+    <a href="../controlers/controlerCarrinho.php?opcao=3"><img src="imagens/meu-carrinho.png"></a>
 </div>
+<div class="container-fluid pt-5 pb-3">
+    <div class="row px-xl-5">
+        <?php
+        foreach ($servicos as $servico) {
+        ?>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                <div class="product-item bg-light mb-4">
+                    <div class="product-img position-relative overflow-hidden">
+                        <img src="imagens/produtos/<?php echo $servico->get_id_servico(); ?>.jpg" width="200" height="200" border="0">
+                    </div>
+                    <div class="text-center py-4">
+                        <a class="h6 text-decoration-none text-truncate" href=""> <?php echo $servico->get_nome(); ?> -</a>
+                        <a class="h6 text-decoration-none text-truncate" href=""> <?php echo $servico->get_descricao(); ?> -</a>
+                        <a class="h6 text-decoration-none text-truncate" href=""> <?php echo $tipoDao->getTipo($servico->get_id_tipo())->get_nome(); ?> </a>
+                        <div class="d-flex align-items-center justify-content-center mt-2">
+                            <h5> R$ <?php echo $servico->get_valor(); ?> </h5>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-center mb-1">
+                            <small class="fa fa-star text-primary mr-1"></small>
+                            <small class="fa fa-star text-primary mr-1"></small>
+                            <small class="fa fa-star text-primary mr-1"></small>
+                            <small class="fa fa-star text-primary mr-1"></small>
+                            <small class="fa fa-star text-primary mr-1"></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <?php
+        }
+        ?>
+    </div>
+</div>
+
 <?php
 require_once 'includes/rodape.inc.php';
 ?>
