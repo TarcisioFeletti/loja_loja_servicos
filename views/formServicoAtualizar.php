@@ -1,5 +1,6 @@
 <?php
 require_once '../classes/servico.inc.php';
+require_once '../classes/data.inc.php';
 require_once '../classes/tipo.inc.php';
 require_once 'includes/autenticar.inc.php';
 require_once 'includes/autenticarRestrito.inc.php';
@@ -32,7 +33,7 @@ $datas = $_SESSION['datas'];
             <?php
             $count = 1;
             foreach ($datas as $data) {
-                echo "<input type='date' name='pData" . $count . "' value='" . conversorData(strtotime($data->data_servico)) . "'>";
+                echo "<input type='date' name='pData" . $count . "' value='" . conversorData(strtotime($data->get_data_servico())) . "'>";
                 $count++;
             }
             for ($i = $count; $i <= 7; $i++) {
