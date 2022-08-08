@@ -89,6 +89,7 @@ if ($opcao == 1) { //inclusão
             $datas[] = $_REQUEST['pData' . $i];
         }
     }
+    $diasDao = new DiasDisponiveisDAO();
     $diasDao->atualizarDatas($datas, $servico->get_id_servico());
     header('Location:controlerServico.php?opcao=2');
 } else if ($opcao == 7) {
