@@ -27,10 +27,11 @@ $tipoDao = new TipoDAO();
                     echo "<td>" . $servico->get_nome() . "</td>";
                     echo "<td> R$ " . $servico->get_valor() . "</td>";
                     echo "<td>" . $servico->get_descricao() . "</td>";
-                    echo "<td>" . $tipoDao->getTipo($servico->get_id_tipo())->get_nome() . "</td>";
+                    $tipo = $tipoDao->getTipo($servico->get_id_tipo());
+                    echo "<td>" . $tipo->get_nome() . "</td>";
                     // ultima célula da tabela
                     echo "<td><a href='../controlers/controlerServico.php?opcao=3&id=" . $servico->get_id_servico() . "'>Alterar</a>&nbsp;";
-                    echo "<a href='../controlers/controlerProduto.php?opcao=4&id=" . $servico->get_id_servico() . "'>Excluir</a></td>";
+                    echo "<a href='../controlers/controlerServico.php?opcao=4&id=" . $servico->get_id_servico() . "'>Excluir</a></td>";
                     echo "</tr>";
                 }
                 ?>

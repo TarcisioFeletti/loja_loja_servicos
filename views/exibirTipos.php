@@ -22,6 +22,7 @@ $tipos = $_SESSION['tipos'];
                     echo "<tr>";
                     echo "<td>" . $tipo->get_id_tipo() . "</td>";
                     echo "<td>" . $tipo->get_nome() . "</td>";
+                    echo "<td>" . $tipo->get_valor() . "</td>";
                     // ultima célula da tabela
                     echo "<td><a href='../controlers/controlerTipo.php?opcao=3&id=" . $tipo->get_id_tipo() . "'>Alterar</a>&nbsp;";
                     echo "<a href='../controlers/controlerTipo.php?opcao=5&id=" . $tipo->get_id_tipo() . "'>Excluir</a></td>";

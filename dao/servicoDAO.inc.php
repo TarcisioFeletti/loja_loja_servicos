@@ -2,6 +2,7 @@
 require_once '../classes/servico.inc.php';
 require_once 'conexao.inc.php';
 require_once 'tipoDAO.inc.php';
+require_once 'diasDisponiveisDAO.inc.php';
 require_once '../utils/dataUtil.inc.php';
 
 class ServicoDAO
@@ -45,7 +46,7 @@ class ServicoDAO
         $lista = array();
         while ($s = $result->fetch(PDO::FETCH_OBJ)) {
             $servico = new Servico();
-            $servico->setAll($s->nome, $s->cod_servico, $s->valor, $s->descricao, $s->id_tipo);
+            $servico->setAll($s->nome, $s->valor, $s->descricao, $s->id_tipo);
             $servico->set_id_servico($s->id_servico);
             $lista[] = $servico;
         }
@@ -69,7 +70,7 @@ class ServicoDAO
         $sql->bindValue(":nome", $servico->get_nome());
         $sql->bindValue(":preco", $servico->get_valor());
         $sql->bindValue(":descricao", $servico->get_descricao());
-        $sql->bindValue(":id_tipo", $servico->get_id_servico());
+        $sql->bindValue(":id_tipo", $servico->get_id_tipo());
         $sql->execute();
     }
 
@@ -79,7 +80,7 @@ class ServicoDAO
         $servicos = array();
         while ($s = $sql->fetch(PDO::FETCH_OBJ)) {
             $servico = new Servico();
-            $servico->setAll($s->nome,$s->cod_servico,$s->valor,$s->descricao,$s->id_tipo);
+            $servico->setAll($s->nome,$s->valor,$s->descricao,$s->id_tipo);
             $servico->set_id_servico($s->id_servico);
             $servicos[] = $servico;
         }
@@ -88,6 +89,8 @@ class ServicoDAO
 
     public function excluirServico($id_servico)
     {
+        $diasDao = new DiasDisponiveisDAO();
+        $diasDao->excluirDatasDoServicoComOId($id_servico);
         $sql = ($this)->con->prepare("DELETE FROM servicos WHERE id_servico = :id");
         $sql->bindValue(":id", $id_servico);
         $sql->execute();
@@ -100,9 +103,17 @@ class ServicoDAO
         $sql->execute();
         $s = $sql->fetch(PDO::FETCH_OBJ);
         $servico = new Servico();
-        $servico->setAll($s->nome, $s->cod_servico, $s->valor, $s->descricao, $s->id_tipo);
+        $servico->setAll($s->nome, $s->valor, $s->descricao, $s->id_tipo);
         $servico->set_id_servico($s->id_servico);
         return $servico;
+    }
+
+    public function getLastServicoId()
+    { //parte do pressuposto que o produto existe no DB
+        $sql = ($this)->con->query("SELECT Max(id_servico) AS maior FROM servicos");
+        $sql->execute();
+        $s = $sql->fetch(PDO::FETCH_OBJ);
+        return $s->maior;
     }
 
     public function atualizarProduto(Servico $servico)

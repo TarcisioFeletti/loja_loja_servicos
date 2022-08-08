@@ -1,5 +1,6 @@
 <?php
 require_once '../classes/servico.inc.php';
+require_once '../classes/tipo.inc.php';
 require_once 'includes/autenticar.inc.php';
 require_once 'includes/autenticarRestrito.inc.php';
 $servico = $_SESSION['servico'];
@@ -25,7 +26,7 @@ $tipos = $_SESSION['tipos'];
                 }
                 ?>
             </select>
-        <p><input type="submit" value="Atualizar"> <input type="reset" value="Cancelar">
+        <p><input type="submit" value="Atualizar"> <input type="reset" value="Limpar">
             <input type="hidden" name="opcao" value="5">
     </form>
     <p>

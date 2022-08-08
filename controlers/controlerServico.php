@@ -1,6 +1,8 @@
 <?php
 require_once '../classes/servico.inc.php';
 require_once '../dao/servicoDAO.inc.php';
+require_once '../dao/tipoDAO.inc.php';
+require_once '../dao/diasDisponiveisDAO.inc.php';
 
 function uploadFotos($ref)
 {
@@ -27,11 +29,27 @@ function deletarFoto($ref)
 $opcao = (int)$_REQUEST['opcao'];
 
 if ($opcao == 1) { //inclusão
+    $datas = array();
+    for ($i = 1; $i <= 7; $i++) {
+        if (!empty($_REQUEST['pData' . $i])) {
+            $datas[] = $_REQUEST['pData' . $i];
+        }
+    }
     $novoServico = new Servico();
-    $novoServico->setAll($_REQUEST['pNome'], $_REQUEST['pCodServico'], $_REQUEST['pPreco'], $_REQUEST['pDescricao'], $_REQUEST['pCodTipo']);
+    $novoServico->setAll(
+        $_REQUEST['pNome'],
+        $_REQUEST['pValor'],
+        $_REQUEST['pDescricao'],
+        $_REQUEST['pTipo']
+    );
     $servicoDao = new ServicoDAO();
     $servicoDao->incluirServico($novoServico);
-    uploadFotos($_REQUEST['pCodServico']);
+    $diasDao = new DiasDisponiveisDAO();
+    $idServico = $servicoDao->getLastServicoId();
+    $diasDao->insertDatas($datas, $idServico);
+    if (!empty($_REQUEST['imagem'])) {
+        uploadFotos($idServico);
+    }
     header('Location:controlerServico.php?opcao=2');
 } else if ($opcao == 2 || $opcao == 6) {
     $servicoDao = new ServicoDAO();
@@ -48,16 +66,18 @@ if ($opcao == 1) { //inclusão
     $servico = $servicoDao->getServico($id);
     session_start();
     $_SESSION['servico'] = $servico;
-    header("Location:controlerFabricante.php?opcao=3"); //Verificar se vai usar essa controler mesmo
+    $tipoDao = new TipoDAO();
+    $_SESSION['tipos'] = $tipoDao->getTipos();
+    header("Location:../views/formServicoAtualizar.php"); //Verificar se vai usar essa controler mesmo
 } else if ($opcao == 4) {
     $id = (int)$_REQUEST['id'];
     $servicoDao = new ServicoDAO();
-    deletarFoto($servicoDao->getServico($id)->get_cod_servico());
+    deletarFoto($servicoDao->getServico($id)->get_id_servico());
     $servicoDao->excluirServico($id);
     header('Location:controlerServico.php?opcao=2');
 } else if ($opcao == 5) {
     $servico = new Servico();
-    $servico->setAll($_REQUEST['pNome'], $_REQUEST['pCodServico'], $_REQUEST['pPreco'], $_REQUEST['pDescricao'], $_REQUEST['pIdTipo']);
+    $servico->setAll($_REQUEST['pNome'], $_REQUEST['pValor'], $_REQUEST['pDescricao'], $_REQUEST['pTipo']);
     $servico->set_id_servico($_REQUEST['pId']);
     $servicoDao = new ServicoDAO();
     $servicoDao->atualizarProduto($servico);
@@ -72,6 +92,6 @@ if ($opcao == 1) { //inclusão
     header("Location:../views/exibirServicosPaginacao.php?paginas=" . $numPaginas);
 } else if ($opcao == 8) {
     $servicoDao = new ServicoDAO();
-    $servicoDao->incluirVariosServicos();
+    //$servicoDao->incluirVariosServicos();
     header("Location:controlerServico.php?opcao=2");
 }
