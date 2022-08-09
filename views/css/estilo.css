@@ -16,7 +16,6 @@
 .menu li {
     position: relative;
     float: left;
-    border-right: 1px solid #c0c0c0;
     font-family: Arial, Tahoma, Verdana, sans-serif;
 }
 
@@ -28,7 +27,7 @@
 }
 
 .menu li a:hover {
-    background: #D99594;
+    background: #ebe26a;
     color: #fff;
     -moz-box-shadow: 0 3px 10px 0 #CCC;
     -webkit-box-shadow: 0 3px 10px 0 #ccc;
@@ -53,7 +52,7 @@
     border: 0px solid #c0c0c0;
     display: block;
     width: 150px;
-    background-color: #C00000;
+    background-color: #FFCB0D;
 }
 
 div.topo {
@@ -67,9 +66,8 @@ div.topo {
 }
 
 div.barra {
-    height: 6%;
     width: auto;
-    background-color: #C00000;
+    background-color: #FFCB0D;
 }
 
 div.corpo {
@@ -77,4 +75,8 @@ div.corpo {
     width: auto;
     line-height: 2em;
     block-size: auto;
+}
+
+li {
+    z-index: 100000;
 }

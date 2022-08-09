@@ -32,7 +32,7 @@
 
 <BODY>
         <div class="topo">
-                <img src="imagens/capa12.png">
+                <img src="imagens/banner_principal_capa.jpg">
         </div>
 
         <div class="barra">

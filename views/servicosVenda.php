@@ -27,9 +27,9 @@ $numPaginas = $_REQUEST['paginas'];
                         <img src="imagens/produtos/<?php echo $servico->get_id_servico(); ?>.jpg" width="200" height="200" border="0">
                     </div>
                     <div class="text-center py-4">
-                        <p class="h6 text-decoration-none text-truncate"> <?php echo $servico->get_nome(); ?>
-                        <p class="h6 text-decoration-none text-truncate"> <?php echo $servico->get_descricao(); ?>
-                        <p class="h6 text-decoration-none text-truncate"> <?php echo $tipoDao->getTipo($servico->get_id_tipo())->get_nome(); ?>
+                        <a class="h6 text-decoration-none text-truncate"> <?php echo $servico->get_nome(); ?> </a>
+                        <a class="h6 text-decoration-none text-truncate"> <?php echo $servico->get_descricao(); ?> </a>
+                        <a class="h6 text-decoration-none text-truncate"> <?php echo $tipoDao->getTipo($servico->get_id_tipo())->get_nome(); ?> </a>
                         <div class="d-flex align-items-center justify-content-center mt-2">
                             <h5> R$ <?php echo $servico->get_valor(); ?> </h5>
                         </div>
