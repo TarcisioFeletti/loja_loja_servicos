@@ -47,9 +47,7 @@ if ($opcao == 1) { //inclusão
     $diasDao = new DiasDisponiveisDAO();
     $idServico = $servicoDao->getLastServicoId();
     $diasDao->insertDatas($datas, $idServico);
-    if (!empty($_REQUEST['imagem'])) {
-        uploadFotos($idServico);
-    }
+    uploadFotos($idServico);
     header('Location:controlerServico.php?opcao=2');
 } else if ($opcao == 2 || $opcao == 6) {
     $servicoDao = new ServicoDAO();
