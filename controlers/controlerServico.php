@@ -102,4 +102,27 @@ if ($opcao == 1) { //inclusão
     $servicoDao = new ServicoDAO();
     $servicoDao->incluirVariosServicos();
     header("Location:controlerServico.php?opcao=2");
+} else if ($opcao == 9) {
+    $pagina = (int)$_REQUEST['pagina'];
+    $servicoDao = new ServicoDAO();
+    session_start();
+    var_dump($_REQUEST['pBusca']);
+    if (isset($_REQUEST['pBusca']) && $_REQUEST['pBusca'] != null) {
+        $busca = $_REQUEST['pBusca'];
+        $lista = $servicoDao->getServicosPaginacaoBusca($pagina, $busca);
+        $numPaginas = $servicoDao->getPaginaBusca($busca);
+        session_start();
+        $_SESSION['servicos'] = $lista;
+        if(sizeof($lista) == 0){
+            header("Location:../views/servicosVendaBusca.php?paginas=" . $numPaginas . "&pBusca=" . $busca . "&erro=1");
+        }else{
+            header("Location:../views/servicosVendaBusca.php?paginas=" . $numPaginas . "&pBusca=" . $busca);
+        }
+    } else {
+        $lista = $servicoDao->getServicosPaginacao($pagina);
+        $numPaginas = $servicoDao->getPagina();
+        session_start();
+        $_SESSION['servicos'] = $lista;
+        header("Location:../views/servicosVendaBusca.php?paginas=" . $numPaginas);
+    }
 }
