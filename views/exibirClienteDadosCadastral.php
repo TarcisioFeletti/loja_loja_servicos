@@ -5,19 +5,25 @@ require_once 'includes/autenticar.inc.php';
 require_once 'includes/autenticarMenu.inc.php';
 $cliente = $_SESSION['cliente'];
 ?>
-<div class="corpo" align="center" style="line-height: 3em;">
-    <h2>Dados Cadastrais</h2>
+<div class="corpo"  style="line-height: 3em;">
+    <h2 align="center">Dados Cadastrais</h2>
     <p>
-    ID: <?php echo $cliente->get_id_cliente() ?>
-    <p>Nome: <?php echo $cliente->get_nome() ?>
-    <p>Endereço: <?php echo $cliente->get_endereco() ?>
-    <p>Telefone: <?php echo $cliente->get_telefone() ?>
-    <p>CPF: <?php echo $cliente->get_cpf() ?>
-    <p>Data de Nascimento: <?php echo conversorData($cliente->get_dt_nascimento()) ?>
-    <p>E-mail: <?php echo $cliente->get_email() ?>
-    <p>
-    <p>Deseja excluir sua conta? Clique <a href='../controlers/controlerCliente.php?opcao=5'>aqui</a>!
+    <div class="container">
+        <ul class="list-group">
+            <li class="list-group-item">ID: <?php echo $cliente->get_id_cliente() ?></li>
+            <li class="list-group-item">Nome: <?php echo $cliente->get_nome() ?></li>
+            <li class="list-group-item">Endereço: <?php echo $cliente->get_endereco() ?></li>
+            <li class="list-group-item">Telefone: <?php echo $cliente->get_telefone() ?></li>
+            <li class="list-group-item">CPF: <?php echo $cliente->get_cpf() ?></li>
+            <li class="list-group-item">Data de Nascimento: <?php echo formatarData($cliente->get_dt_nascimento()) ?></li>
+            <li class="list-group-item">E-mail: <?php echo $cliente->get_email() ?></li>
+        </ul>
+        <p align="center">Deseja excluir sua conta? Clique <a href='../controlers/controlerCliente.php?opcao=5'>aqui</a>!
+    </div>
+
 </div>
+
+
 <?php
 require_once 'includes/rodape.inc.php';
 ?>
