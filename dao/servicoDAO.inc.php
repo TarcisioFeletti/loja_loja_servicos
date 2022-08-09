@@ -23,11 +23,17 @@ class ServicoDAO
             $sql = ($this)->con->prepare("INSERT INTO servicos (nome, valor, descricao, id_tipo) 
             VALUES (:n, :v, :d, :id_t)");
             $sql->bindValue(':n', 'nome ' . $i);
-            $sql->bindValue(':d', 'descricao do produto ' . $i);
+            $sql->bindValue(':d', 'descricao do serviço ' . $i);
             $sql->bindValue(':v', 10 + (2 * $i));
             $tipoDao = new TipoDAO();
             $sql->bindValue(':id_t', $tipoDao->getMaxTipo());
             $sql->execute();
+            $diasDao = new DiasDisponiveisDAO();
+            $datas = array();
+            $datas[] = '2022-08-08';
+            $datas[] = '2022-08-09';
+            $datas[] = '2022-08-10';
+            $diasDao->insertDatas($datas, ($this)->getLastServicoId());
         }
     }
 
