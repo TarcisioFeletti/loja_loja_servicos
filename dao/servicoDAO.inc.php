@@ -17,20 +17,19 @@ class ServicoDAO
         ($this)->porPagina = 10; //valor de exibição padrão
     }
 
-    /*public function incluirVariosServicos()
+    public function incluirVariosServicos()
     {
         for ($i = 1; $i <= 100; $i++) {
-            $sql = ($this)->con->prepare("INSERT INTO servicos (nome, cod_servico, valor, descricao, id_tipo) 
-            VALUES (:n, :cod, :v, :d, :id_t)");
+            $sql = ($this)->con->prepare("INSERT INTO servicos (nome, valor, descricao, id_tipo) 
+            VALUES (:n, :v, :d, :id_t)");
             $sql->bindValue(':n', 'nome ' . $i);
-            $sql->bindValue(':cod', $i);
             $sql->bindValue(':d', 'descricao do produto ' . $i);
             $sql->bindValue(':v', 10 + (2 * $i));
             $tipoDao = new TipoDAO();
             $sql->bindValue(':id_t', $tipoDao->getMaxTipo());
             $sql->execute();
         }
-    }*/
+    }
 
     public function getPagina()
     {

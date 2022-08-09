@@ -51,7 +51,7 @@ class VendaDAO
             $sql->bindValue(":id_venda", $idVenda);
             $sql->execute();
             $dataDao = new DiasDisponiveisDAO();
-            $dataDao->setIndisponivel($item->get_data()->get_data_servico(), $item->get_id_servico());
+            $dataDao->setIndisponivel(conversorData($item->get_data()->get_data_servico()), $item->get_id_servico());
         }
     }
 

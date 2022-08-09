@@ -8,25 +8,24 @@ require_once '../utils/dataUtil.inc.php';
 $opcao = (int)$_REQUEST['opcao'];
 
 if ($opcao == 1) { //incluir do carrinho
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     $id = (int)$_REQUEST['id'];
     if (!isset($_REQUEST['pData'])) {
         header("Location:../views/escolhaDiasDisponiveis.php?id=$id&erro=1");
-    } else if (isset($_SESSION['carrinho'])) {
-        if (strlen($_SESSION['carrinho']) == 5) {
+    } else if (isset($_SESSION['carrinho']) && sizeof($_SESSION['carrinho']) >= 5) {
+        //if (sizeof($_SESSION['carrinho']) >= 5) {
             header('Location:../views/exibirCarrinho.php?erro=2');
-        }
+        //}
     } else {
         $index = $_REQUEST['pData'];
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
         $datas = $_SESSION['dias'];
         $data = $datas[$index];
         $data->set_disponivel(0);
         $servicoDao = new ServicoDAO();
         $servico = $servicoDao->getServico($id);
         $servicoCarrinho = new ServicoCarrinho($servico, $data);
-        session_start();
         if (!isset($_SESSION['carrinho'])) {
             $carrinho = array();
         } else {
