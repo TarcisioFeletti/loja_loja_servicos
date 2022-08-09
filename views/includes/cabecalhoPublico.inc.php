@@ -47,12 +47,11 @@
                                 </li>
                                 <li><a href="../controlers/controlerServico.php?opcao=7&pagina=1">Vendas</a>
                                         <ul>
-                                                <li><a href="../controlers/controlerServico.php?opcao=7&pagina=1">Relação de produtos</a></li>
+                                                <li><a href="../controlers/controlerServico.php?opcao=7&pagina=1">Serviços</a></li>
                                                 <li><a href="../controlers/controlerCarrinho.php?opcao=3">Ver carrinho</a></li>
                                                 <li><a href="../controlers/controlerCarrinho.php?opcao=5">Esvaziar carrinho</a></li>
                                         </ul>
                                 </li>
-                                <li><a href="contato.php">Contato</a></li>
                                 <?php
                                 if (isset($_SESSION['logado']) && $_SESSION == true) {
                                         echo '<li><a href="../controlers/controlerLogin.php?opcao=2">Logout</a></li>';

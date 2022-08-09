@@ -10,6 +10,7 @@ require_once 'includes/autenticarMenu.inc.php';
         <p><input type="submit" value="Login"> <input type="reset" value="Cancelar">
             <input type="hidden" name='opcao' value='1'>
     </form>
+    <p>Ainda não é cliente? Cadastre <a href="formClienteCadastro.php">AQUI</a>!</p>
     <p>
         <?php
         if (isset($_REQUEST['erro'])) {

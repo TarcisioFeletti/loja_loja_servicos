@@ -80,3 +80,8 @@ div.corpo {
 li {
     z-index: 100000;
 }
+
+.centered {
+    margin: 0 auto;
+    float: none;
+}
