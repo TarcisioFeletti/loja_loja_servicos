@@ -61,7 +61,7 @@ require_once 'includes/autenticarMenu.inc.php';
                     }
                     echo "<tr align='center'>";
                     echo "<td><font color='black'><b>Total<b></font></td>";
-                    echo "<td colspan='4' align='right'><font color='red'><b> R$ " . $total . "</b></font></td>";
+                    echo "<td colspan='8' align='right'><font color='red'><b> R$ " . $total . "</b></font></td>";
                     echo "</tr>";
                     ?>
                 </table>

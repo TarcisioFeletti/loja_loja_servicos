@@ -3,20 +3,19 @@ require_once 'includes/autenticarMenu.inc.php';
 ?>
 <div class="corpo" align="center" style="line-height: 3em;">
     <h2>Login do Sistema</h2>
-    
     <div class="login-page">
         <div class="form">
             <form class="login-form" action="../controlers/controlerLogin.php" method="get">
-                <input type="text" placeholder="Login"  size="20" name="pLogin" />
+                <input type="text" placeholder="Login" size="20" name="pLogin" />
                 <input type="password" placeholder="Senha" size="10" name="pSenha" />
                 <input class="input_btn_login" type="submit" value="Login">
                 <p></p>
                 <input class="input_btn_cancelar" type="reset" value="Cancelar">
                 <input type="hidden" name="opcao" value="1">
             </form>
+            <p>Ainda não é cliente? Cadastre <a href="formClienteCadastro.php">AQUI</a>!</p>
         </div>
     </div>
-
     <p>
         <?php
         if (isset($_REQUEST['erro'])) {

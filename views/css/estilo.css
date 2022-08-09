@@ -81,7 +81,13 @@ li {
     z-index: 100000;
 }
 
+.centered {
+    margin: 0 auto;
+    float: none;
+}
+
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
 .login-page {
     width: 360px;
     padding: 2% 0 0;

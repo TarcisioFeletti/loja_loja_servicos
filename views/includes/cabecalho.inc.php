@@ -42,17 +42,13 @@
                                 <li><a href="../controlers/controlerCliente.php?opcao=9">Clientes</a>
                                         <ul>
                                                 <li><a href="formClienteCadastro.php">Cadastrar</a></li>
-                                                <li><a href="#">Cadastrar Vários</a>
                                                 <li><a href="../controlers/controlerCliente.php?opcao=9">Consultar Todos</a>
-                                                <li><a href="#">Consultar Paginação</a>
                                         </ul>
                                 </li>
                                 <li><a href="../controlers/controlerTipo.php?opcao=2">Tipos</a>
                                         <ul>
                                                 <li><a href="formTipo.php">Cadastrar</a></li>
-                                                <li><a href="#">Cadastrar Vários</a>
                                                 <li><a href="../controlers/controlerTipo.php?opcao=2">Consultar Todos</a>
-                                                <li><a href="#">Consultar Paginação</a>
                                         </ul>
                                 </li>
                                 <li><a href="../controlers/controlerServico.php?opcao=2">Serviços</a>
@@ -60,7 +56,6 @@
                                                 <li><a href="../controlers/controlerTipo.php?opcao=6">Cadastrar</a></li>
                                                 <li><a href="../controlers/controlerServico.php?opcao=8">Cadastrar Vários</a>
                                                 <li><a href="../controlers/controlerServico.php?opcao=2">Consultar Todos</a>
-                                                <li><a href="../controlers/controlerServico.php?opcao=7">Consultar Paginação</a>
                                         </ul>
                                 </li>
                                 <li><a href="../controlers/controlerLogin.php?opcao=2">Logout</a></li>

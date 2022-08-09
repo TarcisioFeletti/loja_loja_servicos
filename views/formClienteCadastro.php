@@ -8,8 +8,10 @@ require_once 'includes/autenticarMenu.inc.php';
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-        if ($_SESSION['logado'] == true && $_SESSION['tipousuario'] == 2) {
-            echo "<p>Você já está logado! Deseja <a href='../controlers/controlerLogin.php?opcao=2'>sair</a>?";
+        if (isset($_SESSION['logado']) && $_SESSION['tipousuario'] == 2) {
+            if ($_SESSION['logado'] == true && $_SESSION['tipousuario'] == 2) {
+                echo "<p>Você já está logado! Deseja <a href='../controlers/controlerLogin.php?opcao=2'>sair</a>?";
+            }
         } else {
         ?>
     <form action="../controlers/controlerCliente.php" method="post" enctype="multipart/form-data>">
@@ -22,16 +24,20 @@ require_once 'includes/autenticarMenu.inc.php';
         <p>Senha: <input type="password" size="8" name="pSenha">
         <p><input type="submit" value="Cadastrar"> <input type="reset" value="Cancelar">
             <?php
-            if ($_SESSION['logado'] == true && $_SESSION['tipousuario'] == 1) {
-                echo "<input type='hidden' name='opcao' value='8'>";
+            if (isset($_SESSION['logado'])) {
+                if ($_SESSION['logado'] == true && $_SESSION['tipousuario'] == 1) {
+                    echo "<input type='hidden' name='opcao' value='8'>";
+                }
             } else {
                 echo "<input type='hidden' name='opcao' value='2'>";
             }
             ?>
     </form>
     <?php
-            if (!($_SESSION['logado'] == true && $_SESSION['tipousuario'] == 1)) {
-                echo '<p>Já é cliente? Acesse o sistema <a href="formClienteLogin.php">AQUI</a>!</p>';
+            if (isset($_SESSION['logado'])) {
+                if (!($_SESSION['logado'] == true && $_SESSION['tipousuario'] == 1)) {
+                    echo '<p>Já é cliente? Acesse o sistema <a href="formClienteLogin.php">AQUI</a>!</p>';
+                }
             }
     ?>
     <p>
