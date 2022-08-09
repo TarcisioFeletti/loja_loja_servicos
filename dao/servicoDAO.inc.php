@@ -44,6 +44,13 @@ class ServicoDAO
         return $numPaginas;
     }
 
+    public function getPaginaBusca($busca)
+    {
+        $resultTotal = $this->con->query("SELECT count(*) AS total FROM servicos WHERE nome LIKE '%$busca%'")->fetch(PDO::FETCH_OBJ);
+        $numPaginas = ceil($resultTotal->total / $this->porPagina);
+        return $numPaginas;
+    }
+
     public function getServicosPaginacao($pagina)
     {
         $init = ($pagina - 1) * ($this)->porPagina;
@@ -61,9 +68,7 @@ class ServicoDAO
     public function getServicosPaginacaoBusca($pagina, $busca)
     {
         $init = ($pagina - 1) * ($this)->porPagina;
-        $result = ($this)->con->prepare("SELECT * FROM servicos s WHERE s.nome like '%:nm%' LIMIT $init, $this->porPagina");
-        $result->bindValue(":nm", $busca);
-        $result->execute();
+        $result = ($this)->con->query("SELECT * FROM servicos WHERE nome LIKE '%$busca%' LIMIT $init, $this->porPagina");
         $lista = array();
         while ($s = $result->fetch(PDO::FETCH_OBJ)) {
             $servico = new Servico();

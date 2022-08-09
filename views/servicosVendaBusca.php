@@ -14,8 +14,8 @@ $numPaginas = $_REQUEST['paginas'];
     <p>
     <form class="form" action="../controlers/controlerServico.php" method="get">
         <?php
-        if(isset($_SESSION['busca'])){
-            echo "<input type='text' class='centered' placeholder='Busca' size='80%' name='pBusca' value = ". $_SESSION['busca']. " />";
+        if(isset($_REQUEST['pBusca'])){
+            echo "<input type='text' class='centered' placeholder='Busca' size='80%' name='pBusca' value = ". $_REQUEST['pBusca']. " />";
         }else{
             echo "<input type='text' class='centered' placeholder='Busca' size='80%' name='pBusca' />";
         }
@@ -24,6 +24,13 @@ $numPaginas = $_REQUEST['paginas'];
         <input type="hidden" name="pagina" value="1">
         <input class="input_btn" type="submit" value="Buscar">
     </form>
+    <?php
+    if(isset($_REQUEST['erro'])){
+        if($_REQUEST['erro'] == 1){
+            echo "<b><font face='Verdana' size='5' color='gray'>Nenhum produto encontrado</font></b>";
+        }
+    }
+    ?>
     <!--<div class='carrinho' align='right'>
         <a href="../controlers/controlerCarrinho.php?opcao=3"><img src="imagens/meu-carrinho.png"></a>
     </div>-->
@@ -57,7 +64,7 @@ $numPaginas = $_REQUEST['paginas'];
         <div align="center">
             <?php
             for ($i = 1; $i <= $numPaginas; $i++) {
-                echo '<a href="../controlers/controlerServico.php?opcao=7&pagina=' . $i . '">' . $i . '</a> ';
+                echo '<a href="../controlers/controlerServico.php?opcao=9&pagina=' . $i . '&pBusca='. $_REQUEST['pBusca'] .'">' . $i . '</a> ';                
             }
             ?>
         </div>
