@@ -12,6 +12,10 @@ $numPaginas = $_REQUEST['paginas'];
 <div class="corpo" align="center" style="line-height: 3em;">
     <h1>Serviços</h1>
     <p>
+    <form class="form" action="../controlers/controlerServico.php?opcao=7" method="get">
+        <input type="text" class="centered" placeholder="Busca" size="80%" name="pBusca" />
+        <input class="input_btn" type="submit" value="Login">
+    </form>
     <!--<div class='carrinho' align='right'>
         <a href="../controlers/controlerCarrinho.php?opcao=3"><img src="imagens/meu-carrinho.png"></a>
     </div>-->

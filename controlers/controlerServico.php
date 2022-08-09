@@ -93,7 +93,11 @@ if ($opcao == 1) { //inclusão
 } else if ($opcao == 7) {
     $pagina = (int)$_REQUEST['pagina'];
     $servicoDao = new ServicoDAO();
-    $lista = $servicoDao->getServicosPaginacao($pagina);
+    if (isset($_REQUEST['pBusca']) && $_REQUEST['pBusca'] == null) {
+        $lista = $servicoDao->getServicosPaginacaoBusca($pagina, $_REQUEST['pBusca']);
+    } else {
+        $lista = $servicoDao->getServicosPaginacao($pagina);
+    }
     $numPaginas = $servicoDao->getPagina();
     session_start();
     $_SESSION['servicos'] = $lista;

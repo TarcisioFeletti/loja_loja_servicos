@@ -58,6 +58,22 @@ class ServicoDAO
         return $lista;
     }
 
+    public function getServicosPaginacaoBusca($pagina, $busca)
+    {
+        $init = ($pagina - 1) * ($this)->porPagina;
+        $result = ($this)->con->prepare("SELECT * FROM servicos s WHERE s.nome like '%:nm%' LIMIT $init, $this->porPagina");
+        $result->bindValue(":nm", $busca);
+        $result->execute();
+        $lista = array();
+        while ($s = $result->fetch(PDO::FETCH_OBJ)) {
+            $servico = new Servico();
+            $servico->setAll($s->nome, $s->valor, $s->descricao, $s->id_tipo);
+            $servico->set_id_servico($s->id_servico);
+            $lista[] = $servico;
+        }
+        return $lista;
+    }
+
     public function getPorPagina()
     {
         return ($this)->porPagina;
