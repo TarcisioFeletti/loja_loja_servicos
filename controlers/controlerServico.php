@@ -47,7 +47,9 @@ if ($opcao == 1) { //inclusão
     $diasDao = new DiasDisponiveisDAO();
     $idServico = $servicoDao->getLastServicoId();
     $diasDao->insertDatas($datas, $idServico);
-    uploadFotos($idServico);
+    if (isset($_REQUEST['imagem'])) {
+        uploadFotos($idServico);
+    }
     header('Location:controlerServico.php?opcao=2');
 } else if ($opcao == 2 || $opcao == 6) {
     $servicoDao = new ServicoDAO();
@@ -113,9 +115,9 @@ if ($opcao == 1) { //inclusão
         $numPaginas = $servicoDao->getPaginaBusca($busca);
         session_start();
         $_SESSION['servicos'] = $lista;
-        if(sizeof($lista) == 0){
+        if (sizeof($lista) == 0) {
             header("Location:../views/servicosVendaBusca.php?paginas=" . $numPaginas . "&pBusca=" . $busca . "&erro=1");
-        }else{
+        } else {
             header("Location:../views/servicosVendaBusca.php?paginas=" . $numPaginas . "&pBusca=" . $busca);
         }
     } else {
