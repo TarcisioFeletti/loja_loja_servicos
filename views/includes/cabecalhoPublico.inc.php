@@ -45,7 +45,7 @@
                                                 <li><a href="../views/formClienteAtualizar.php">Alterar Dados Cadastrais</a></li>
                                         </ul>
                                 </li>
-                                <li><a href="../controlers/controlerServico.php?opcao=6">Vendas</a>
+                                <li><a href="../controlers/controlerServico.php?opcao=7&pagina=1">Vendas</a>
                                         <ul>
                                                 <li><a href="../controlers/controlerServico.php?opcao=6">Relação de produtos</a></li>
                                                 <li><a href="../controlers/controlerCarrinho.php?opcao=3">Ver carrinho</a></li>

@@ -99,9 +99,9 @@ if ($opcao == 1) { //inclusão
     $numPaginas = $servicoDao->getPagina();
     session_start();
     $_SESSION['servicos'] = $lista;
-    header("Location:../views/exibirServicosPaginacao.php?paginas=" . $numPaginas);
+    header("Location:../views/servicosVenda.php?paginas=" . $numPaginas);
 } else if ($opcao == 8) {
     $servicoDao = new ServicoDAO();
-    //$servicoDao->incluirVariosServicos();
+    $servicoDao->incluirVariosServicos();
     header("Location:controlerServico.php?opcao=2");
 }

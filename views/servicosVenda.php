@@ -7,6 +7,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 $servicos = $_SESSION['servicos'];
 $tipoDao = new TipoDAO();
+$numPaginas = $_REQUEST['paginas'];
 ?>
 
 <h1>Relação de Serviços</h1>
@@ -45,6 +46,13 @@ $tipoDao = new TipoDAO();
         </a>
 
         <?php
+        }
+        ?>
+    </div>
+    <div align = "center">
+        <?php
+        for ($i = 1; $i <= $numPaginas; $i++) {
+            echo '<a href="../controlers/controlerServico.php?opcao=7&pagina=' . $i . '">' . $i . '</a> ';
         }
         ?>
     </div>

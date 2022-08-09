@@ -47,6 +47,16 @@ class TipoDAO
         return $tipo;
     }
 
+    public function getMaxTipo()
+    {
+        $sql = ($this)->con->query(
+            "SELECT Max(id_tipo) AS maior FROM tipo;"
+        );
+        $sql->execute();
+        $t = $sql->fetch(PDO::FETCH_OBJ);
+        return $t->maior;
+    }
+
     public function incluir(Tipo $tipo)
     {
         $sql = ($this)->con->prepare(
