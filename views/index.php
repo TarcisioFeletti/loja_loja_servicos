@@ -22,7 +22,7 @@ require_once 'includes/autenticarMenu.inc.php';
         <img src="./imagens/banner2.png" class=" d-block w-100 rounded">
       </div>
       <div class="carousel-item">
-        <img src="./assets/img/home/banner03.jpg" class=" d-block w-100 rounded">
+        <img src="./imagens/banner3.png" class=" d-block w-100 rounded">
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -41,7 +41,7 @@ require_once 'includes/autenticarMenu.inc.php';
 <section class="py-6 mt-5 bg-gray-100">
   <div class="container">
     <div class="text-center pb-lg-4">
-      <h2 class="mb-5">Reservar seu carro conosco é fácil!</h2>
+      <h2 class="mb-5">Contrate um dos nossos serviços</h2>
     </div>
     <div class="row">
       <div class="col-lg-4 mb-3 mb-lg-0 text-center">
@@ -49,9 +49,9 @@ require_once 'includes/autenticarMenu.inc.php';
           <div class="icon-rounded bg-primary-light mb-3">
             <img class="img-thumbnail" src="https://cdn.autopapo.com.br/box/uploads/2021/11/18164919/mulher_entrega_chave_de_carro-732x488.jpg" />
           </div>
-          <h3 class="h5">Encontre o aluguel perfeito!
+          <h3 class="h5">Encontre o serviço que está precisando!
           </h3>
-          <p class="text-muted">Com diversos carros em nossa frota, você pode escolher o que melhor lhe atende.</p>
+          <p class="text-muted">Nosso portifólio possui diversos serviços pronto para serem contratados.</p>
         </div>
       </div>
       <div class="col-lg-4 mb-3 mb-lg-0 text-center">
@@ -59,9 +59,9 @@ require_once 'includes/autenticarMenu.inc.php';
           <div class="icon-rounded bg-primary-light mb-3">
             <img class="img-thumbnail" src="https://g4carros.com.br/wp-content/uploads/2022/01/04-1.jpg" />
           </div>
-          <h3 class="h5">Reserve com confiança!
+          <h3 class="h5">Escolha rápida e fácil
           </h3>
-          <p class="text-muted">Conosco, você pagará somente pelo que usar.</p>
+          <p class="text-muted">Escolha qual melhor o atende, basta apenas adicionar a data que deseja e pronto.</p>
         </div>
       </div>
       <div class="col-lg-4 mb-3 mb-lg-0 text-center">
@@ -69,9 +69,9 @@ require_once 'includes/autenticarMenu.inc.php';
           <div class="icon-rounded bg-primary-light mb-3">
             <img class="img-thumbnail" src="https://cpfabbri.com.br/wp-content/uploads/2022/02/carro.jpg" />
           </div>
-          <h3 class="h5">Aproveitem as suas férias!
+          <h3 class="h5">Depois é só aproveitar!
           </h3>
-          <p class="text-muted">Curta suas férias entre família ou amigos, sem preocupações com o veículo alugado, pois todos os veiculos são assegurados.</p>
+          <p class="text-muted">Depois da contratação, não precisa se preocupar com nada! Deixe tudo conosco.</p>
         </div>
       </div>
     </div>
