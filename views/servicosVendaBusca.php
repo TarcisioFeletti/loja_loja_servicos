@@ -47,7 +47,9 @@ $numPaginas = $_REQUEST['paginas'];
                             </div>
                             <div class="text-center py-4">
                                 <a class="h6 text-decoration-none text-truncate"> <?php echo $servico->get_nome(); ?> </a>
+                                <p class="espacamento_produto"></p>
                                 <a class="h6 text-decoration-none text-truncate"> <?php echo $servico->get_descricao(); ?> </a>
+                                <p class="espacamento_produto"></p>
                                 <a class="h6 text-decoration-none text-truncate"> <?php echo $tipoDao->getTipo($servico->get_id_tipo())->get_nome(); ?> </a>
                                 <div class="d-flex align-items-center justify-content-center mt-2">
                                     <h5> R$ <?php echo $servico->get_valor(); ?> </h5>
@@ -64,7 +66,7 @@ $numPaginas = $_REQUEST['paginas'];
         <div align="center">
             <?php
             for ($i = 1; $i <= $numPaginas; $i++) {
-                echo '<a href="../controlers/controlerServico.php?opcao=9&pagina=' . $i . '&pBusca='. $_REQUEST['pBusca'] .'">' . $i . '</a> ';                
+                echo '<a class="paginacao_estilo" href="../controlers/controlerServico.php?opcao=9&pagina=' . $i . '&pBusca='. $_REQUEST['pBusca'] .'">' . $i . '</a> ';                
             }
             ?>
         </div>

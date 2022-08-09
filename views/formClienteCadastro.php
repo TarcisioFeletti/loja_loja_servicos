@@ -14,25 +14,36 @@ require_once 'includes/autenticarMenu.inc.php';
             }
         } else {
         ?>
-    <form action="../controlers/controlerCliente.php" method="post" enctype="multipart/form-data>">
-        Nome: <input type="text" size="50" name="pNome">
-        <p>Endereço: <input type="text" size="50" name="pEndereco">
-        <p>Telefone: <input type="text" size="20" name="pTelefone">
-        <p>CPF: <input type=" text" size="13" name="pCpf">
-        <p>Data de Nascimento: <input type="date" name="pData">
-        <p>E-mail: <input type="text" size="20" name="pLogin">
-        <p>Senha: <input type="password" size="8" name="pSenha">
-        <p><input type="submit" value="Cadastrar"> <input type="reset" value="Cancelar">
-            <?php
-            if (isset($_SESSION['logado'])) {
-                if ($_SESSION['logado'] == true && $_SESSION['tipousuario'] == 1) {
-                    echo "<input type='hidden' name='opcao' value='8'>";
-                }
-            } else {
-                echo "<input type='hidden' name='opcao' value='2'>";
-            }
-            ?>
-    </form>
+
+    <div class="login-page">
+        <div class="form">
+            <form action="../controlers/controlerCliente.php" method="post" enctype="multipart/form-data>">
+                Nome: <input type="text" size="50" name="pNome" value="" minlength="1" required maxlength="50">
+                <p>Endereço: <input type="text" size="100" name="pEndereco" minlength="1" required maxlength="50">
+                <p>Telefone: <input type="text" size="12" name="pTelefone" minlength="1" required maxlength="20">
+                <p>Data de Nascimento: <input type="date" name="pData" required>
+                <p>CPF: <input type="text" size="12" name="pCpf" minlength="1" required maxlength="13">
+                <p>E-mail: <input type="email" size="20" name="pLogin" minlength="1" required maxlength="20">
+                <p>Senha: <input type="password" size="12" name="pSenha" minlength="1" required maxlength="8">
+                <p></p>
+
+                <p><input type="submit" value="Cadastrar"> <input type="reset" value="Cancelar">
+                    <?php
+                    if (isset($_SESSION['logado'])) {
+                        if ($_SESSION['logado'] == true && $_SESSION['tipousuario'] == 1) {
+                            echo "<input type='hidden' name='opcao' value='8'>";
+                        }
+                    } else {
+                        echo "<input type='hidden' name='opcao' value='2'>";
+                    }
+                    ?>
+            </form>
+        </div>
+    </div>
+
+
+
+
     <?php
             if (isset($_SESSION['logado'])) {
                 if (!($_SESSION['logado'] == true && $_SESSION['tipousuario'] == 1)) {
