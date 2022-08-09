@@ -8,7 +8,7 @@ require_once 'includes/autenticarMenu.inc.php';
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-        if (isset($_SESSION['logado'])) {
+        if (isset($_SESSION['logado']) && $_SESSION['tipousuario'] == 2) {
             if ($_SESSION['logado'] == true && $_SESSION['tipousuario'] == 2) {
                 echo "<p>Você já está logado! Deseja <a href='../controlers/controlerLogin.php?opcao=2'>sair</a>?";
             }
