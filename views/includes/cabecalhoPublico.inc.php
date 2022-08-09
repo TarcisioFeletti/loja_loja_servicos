@@ -47,7 +47,7 @@
                                 </li>
                                 <li><a href="../controlers/controlerServico.php?opcao=7&pagina=1">Vendas</a>
                                         <ul>
-                                                <li><a href="../controlers/controlerServico.php?opcao=6">Relação de produtos</a></li>
+                                                <li><a href="../controlers/controlerServico.php?opcao=7&pagina=1">Relação de produtos</a></li>
                                                 <li><a href="../controlers/controlerCarrinho.php?opcao=3">Ver carrinho</a></li>
                                                 <li><a href="../controlers/controlerCarrinho.php?opcao=5">Esvaziar carrinho</a></li>
                                         </ul>

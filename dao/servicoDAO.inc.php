@@ -14,7 +14,7 @@ class ServicoDAO
     {
         $conexao = new Conexao();
         ($this)->con = $conexao->getConexao();
-        ($this)->porPagina = 10; //valor de exibição padrão
+        ($this)->porPagina = 12; //valor de exibição padrão
     }
 
     public function incluirVariosServicos()
