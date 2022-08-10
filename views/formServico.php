@@ -22,7 +22,7 @@ $tipos = $_SESSION['tipos'];
                         ?>
                     </select>
                 <p>Datas:
-                    <input type="date" name="pData1">
+                    <input type="date" name="pData1" required>
                     <input type="date" name="pData2">
                     <input type="date" name="pData3">
                     <input type="date" name="pData4">

@@ -11,8 +11,8 @@ $tipo = $_SESSION['tipo'];
         <div class="form">
             <form action="../controlers/controlerTipo.php" method="post">
                 ID: <input type="text" size="20" name="pId" value="<?php echo $tipo->get_id_tipo() ?>" readonly>
-                <p>Nome: <input type="text" size="30" name="pNome" value="<?php echo $tipo->get_nome() ?>">
-                <p>Valor: <input type="number" min="0" name="pValor" value="<?php echo $tipo->get_valor() ?>">
+                <p>Nome: <input type="text" size="30" name="pNome" value="<?php echo $tipo->get_nome() ?>" minlength="1" required maxlength="50">
+                <p>Valor: <input type="number" min="0" name="pValor" value="<?php echo $tipo->get_valor() ?>" minlength="1" required>
                 <p><input type="submit" value="Atualizar"> <input type="reset" value="Cancelar">
                     <input type="hidden" name="opcao" value="4">
             </form>

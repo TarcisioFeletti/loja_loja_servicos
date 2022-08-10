@@ -9,41 +9,43 @@ $clientes = $_SESSION['clientes'];
     <h1>Clientes Cadastrados</h1>
     <p>
         <font face="Tahoma">
-            <table class="table" border="1" cellspacing="2" cellpadding="1" width="50%">
-                <tr>
-                    <th witdh="10%">ID</th>
-                    <th>Nome</th>
-                    <th>Endereço</th>
-                    <th>Telefone</th>
-                    <th>CPF</th>
-                    <th>Data de Nascimento</th>
-                    <th>Data de Exclusão</th>
-                    <th>E-mail</th>
-                    <th>Operação</th>
-                </tr>
-                <?php
-                foreach ($clientes as $cliente) {
-                    //MONTAGEM DA TABELA
-                    echo "<tr>";
-                    echo "<td>" . $cliente->get_id_cliente() . "</td>";
-                    echo "<td>" . $cliente->get_nome() . "</td>";
-                    echo "<td>" . $cliente->get_endereco() . "</td>";
-                    echo "<td>" . $cliente->get_telefone() . "</td>";
-                    echo "<td>" . $cliente->get_cpf() . "</td>";
-                    echo "<td>" . formatarData($cliente->get_dt_nascimento()) . "</td>";
-                    if ($cliente->get_dt_exclusao() == null) {
-                        echo "<td>Ativo</td>";
-                    } else {
-                        echo "<td>" . formatarData($cliente->get_dt_exclusao()) . "</td>";
+            <div class="container">
+                <table class="table" border="1" cellspacing="2" cellpadding="1" width="50%">
+                    <tr>
+                        <th witdh="10%">ID</th>
+                        <th>Nome</th>
+                        <th>Endereço</th>
+                        <th>Telefone</th>
+                        <th>CPF</th>
+                        <th>Data de Nascimento</th>
+                        <th>Data de Exclusão</th>
+                        <th>E-mail</th>
+                        <th>Operação</th>
+                    </tr>
+                    <?php
+                    foreach ($clientes as $cliente) {
+                        //MONTAGEM DA TABELA
+                        echo "<tr>";
+                        echo "<td>" . $cliente->get_id_cliente() . "</td>";
+                        echo "<td>" . $cliente->get_nome() . "</td>";
+                        echo "<td>" . $cliente->get_endereco() . "</td>";
+                        echo "<td>" . $cliente->get_telefone() . "</td>";
+                        echo "<td>" . $cliente->get_cpf() . "</td>";
+                        echo "<td>" . formatarData($cliente->get_dt_nascimento()) . "</td>";
+                        if ($cliente->get_dt_exclusao() == null) {
+                            echo "<td>Ativo</td>";
+                        } else {
+                            echo "<td>" . formatarData($cliente->get_dt_exclusao()) . "</td>";
+                        }
+                        echo "<td>" . $cliente->get_email() . "</td>";
+                        // ultima célula da tabela
+                        echo "<td><a href='../controlers/controlerCliente.php?opcao=10&id=" . $cliente->get_id_cliente() . "'>Alterar</a>&nbsp;";
+                        echo "<a href='../controlers/controlerCliente.php?opcao=12&id=" . $cliente->get_id_cliente() . "'>Excluir</a></td>";
+                        echo "</tr>";
                     }
-                    echo "<td>" . $cliente->get_email() . "</td>";
-                    // ultima célula da tabela
-                    echo "<td><a href='../controlers/controlerCliente.php?opcao=10&id=" . $cliente->get_id_cliente() . "'>Alterar</a>&nbsp;";
-                    echo "<a href='../controlers/controlerCliente.php?opcao=12&id=" . $cliente->get_id_cliente() . "'>Excluir</a></td>";
-                    echo "</tr>";
-                }
-                ?>
-            </table>
+                    ?>
+                </table>
+            </div>
         </font>
 </div>
 <?php

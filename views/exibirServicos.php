@@ -10,32 +10,34 @@ $tipoDao = new TipoDAO();
     <h1>Serviços Cadastrados</h1>
     <p>
         <font face="Tahoma">
-            <table class="table" border="1" cellspacing="2" cellpadding="1" width="50%">
-                <tr>
-                    <th witdh="10%">ID</th>
-                    <th>Nome</th>
-                    <th>Valor</th>
-                    <th>Descrição</th>
-                    <th>Tipo</th>
-                    <th>Operação</th>
-                </tr>
-                <?php
-                foreach ($servicos as $servico) {
-                    //MONTAGEM DA TABELA
-                    echo "<tr>";
-                    echo "<td>" . $servico->get_id_servico() . "</td>";
-                    echo "<td>" . $servico->get_nome() . "</td>";
-                    echo "<td> R$ " . $servico->get_valor() . "</td>";
-                    echo "<td>" . $servico->get_descricao() . "</td>";
-                    $tipo = $tipoDao->getTipo($servico->get_id_tipo());
-                    echo "<td>" . $tipo->get_nome() . "</td>";
-                    // ultima célula da tabela
-                    echo "<td><a href='../controlers/controlerServico.php?opcao=3&id=" . $servico->get_id_servico() . "'>Alterar</a>&nbsp;";
-                    echo "<a href='../controlers/controlerServico.php?opcao=4&id=" . $servico->get_id_servico() . "'>Excluir</a></td>";
-                    echo "</tr>";
-                }
-                ?>
-            </table>
+            <div class="container">
+                <table class="table" border="1" cellspacing="2" cellpadding="1" width="50%">
+                    <tr>
+                        <th witdh="10%">ID</th>
+                        <th>Nome</th>
+                        <th>Valor</th>
+                        <th>Descrição</th>
+                        <th>Tipo</th>
+                        <th>Operação</th>
+                    </tr>
+                    <?php
+                    foreach ($servicos as $servico) {
+                        //MONTAGEM DA TABELA
+                        echo "<tr>";
+                        echo "<td>" . $servico->get_id_servico() . "</td>";
+                        echo "<td>" . $servico->get_nome() . "</td>";
+                        echo "<td> R$ " . $servico->get_valor() . "</td>";
+                        echo "<td>" . $servico->get_descricao() . "</td>";
+                        $tipo = $tipoDao->getTipo($servico->get_id_tipo());
+                        echo "<td>" . $tipo->get_nome() . "</td>";
+                        // ultima célula da tabela
+                        echo "<td><a href='../controlers/controlerServico.php?opcao=3&id=" . $servico->get_id_servico() . "'>Alterar</a>&nbsp;";
+                        echo "<a href='../controlers/controlerServico.php?opcao=4&id=" . $servico->get_id_servico() . "'>Excluir</a></td>";
+                        echo "</tr>";
+                    }
+                    ?>
+                </table>
+            </div>
         </font>
 </div>
 <?php
