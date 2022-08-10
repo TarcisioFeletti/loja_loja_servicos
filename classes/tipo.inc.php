@@ -5,7 +5,6 @@ class Tipo
     protected $nome;
     protected $valor;
 
-    //metodo para setar todos os valores
     function setAll(
         $novo_nome,
         $novo_valor
@@ -14,7 +13,6 @@ class Tipo
         ($this)->valor = $novo_valor;
     }
 
-    //getters and setters
     function get_id_tipo()
     {
         return ($this)->id_tipo;

@@ -7,14 +7,14 @@ require_once '../utils/dataUtil.inc.php';
 
 class ServicoDAO
 {
-    private $con; //constrola a conexão do BD
+    private $con;
     private $porPagina;
 
     function __construct()
     {
         $conexao = new Conexao();
         ($this)->con = $conexao->getConexao();
-        ($this)->porPagina = 12; //valor de exibição padrão
+        ($this)->porPagina = 12;
     }
 
     public function incluirVariosServicos()
@@ -106,7 +106,7 @@ class ServicoDAO
         $servicos = array();
         while ($s = $sql->fetch(PDO::FETCH_OBJ)) {
             $servico = new Servico();
-            $servico->setAll($s->nome,$s->valor,$s->descricao,$s->id_tipo);
+            $servico->setAll($s->nome, $s->valor, $s->descricao, $s->id_tipo);
             $servico->set_id_servico($s->id_servico);
             $servicos[] = $servico;
         }
@@ -123,7 +123,7 @@ class ServicoDAO
     }
 
     public function getServico($id)
-    { //parte do pressuposto que o produto existe no DB
+    {
         $sql = ($this)->con->prepare("SELECT * FROM servicos WHERE id_servico = :id");
         $sql->bindValue(":id", $id);
         $sql->execute();
@@ -135,7 +135,7 @@ class ServicoDAO
     }
 
     public function getLastServicoId()
-    { //parte do pressuposto que o produto existe no DB
+    {
         $sql = ($this)->con->query("SELECT Max(id_servico) AS maior FROM servicos");
         $sql->execute();
         $s = $sql->fetch(PDO::FETCH_OBJ);

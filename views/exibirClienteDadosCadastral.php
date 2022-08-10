@@ -5,7 +5,7 @@ require_once 'includes/autenticar.inc.php';
 require_once 'includes/autenticarMenu.inc.php';
 $cliente = $_SESSION['cliente'];
 ?>
-<div class="corpo"  style="line-height: 3em;">
+<div class="corpo" style="line-height: 3em;">
     <h2 align="center">Dados Cadastrais</h2>
     <p>
     <div class="container">

@@ -93,7 +93,8 @@ class DiasDisponiveisDAO
         return $tipo->nome;
     }
 
-    public function setIndisponivel($data, $idServico){
+    public function setIndisponivel($data, $idServico)
+    {
         $sql = ($this)->con->prepare(
             "UPDATE
             datas_disponiveis 
@@ -109,7 +110,8 @@ class DiasDisponiveisDAO
         $sql->execute();
     }
 
-    public function setDisponivel($data, $idServico){
+    public function setDisponivel($data, $idServico)
+    {
         $sql = ($this)->con->prepare(
             "UPDATE
             datas_disponiveis 

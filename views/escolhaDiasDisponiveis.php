@@ -45,7 +45,7 @@ if (!isset($_REQUEST['id']) || !isset($_SESSION['dias'])) {
                     }
                     $count++;
                     $mostrou = false;
-                }else{
+                } else {
                     echo "<p><input type='radio' name='pData' value='" . $count . "' disabled> " . formatarData($dia->get_data_servico());
                 }
             }
