@@ -15,9 +15,7 @@ if ($opcao == 1) { //incluir do carrinho
     if (!isset($_REQUEST['pData'])) {
         header("Location:../views/escolhaDiasDisponiveis.php?id=$id&erro=1");
     } else if (isset($_SESSION['carrinho']) && sizeof($_SESSION['carrinho']) >= 5) {
-        //if (sizeof($_SESSION['carrinho']) >= 5) {
-            header('Location:../views/exibirCarrinho.php?erro=2');
-        //}
+        header('Location:../views/exibirCarrinho.php?erro=2');
     } else {
         $index = $_REQUEST['pData'];
         $datas = $_SESSION['dias'];
@@ -39,7 +37,7 @@ if ($opcao == 1) { //incluir do carrinho
         $carrinho[] = $servicoCarrinho;
         sort($carrinho);
         $_SESSION['carrinho'] = $carrinho;
-        header('Location:../views/exibirCarrinho.php'); //adiciona no carrinho
+        header('Location:../views/exibirCarrinho.php');
     }
 } else if ($opcao == 2) { //remover do carrinho
     $index = (int)$_REQUEST['id'];

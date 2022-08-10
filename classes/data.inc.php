@@ -6,7 +6,6 @@ class Data
     protected $data_servico;
     protected $disponivel;
 
-    //metodo para setar todos os valores
     function setAll(
         $novo_id_servico,
         $novo_data_servico,
@@ -17,7 +16,6 @@ class Data
         ($this)->disponivel = $novo_disponivel;
     }
 
-    //getters and setters
     function get_id_disponibilidade()
     {
         return ($this)->id_disponibilidade;
@@ -58,4 +56,3 @@ class Data
         ($this)->disponivel = $novo_disponivel;
     }
 }
-?>

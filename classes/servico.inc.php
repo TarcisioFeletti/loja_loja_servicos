@@ -7,8 +7,6 @@ class Servico
     protected $descricao;
     protected $id_tipo;
 
-
-    //metodo para setar todos os valores
     function setAll(
         $novo_nome,
         $novo_valor,
@@ -21,7 +19,7 @@ class Servico
         ($this)->id_tipo = $novo_id_tipo;
     }
 
-    //getters and setters
+
     function get_id_servico()
     {
         return ($this)->id_servico;

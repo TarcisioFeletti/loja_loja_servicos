@@ -56,7 +56,7 @@ class VendaDAO
     }
 
     function getIdVenda()
-    { //retorna o ultimo idvenda na tabela
+    {
         $sql = ($this)->con->query(
             'SELECT MAX(id_venda) AS maior FROM vendas'
         );

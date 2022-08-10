@@ -7,7 +7,7 @@ require_once '../dao/diasDisponiveisDAO.inc.php';
 function uploadFotos($ref)
 {
     $imagem = $_FILES["imagem"];
-    $nome = $ref; // será colocado a Referência do produto como nome do arquivo
+    $nome = $ref;
     if ($imagem != NULL) {
         $nome_temporario = $_FILES["imagem"]["tmp_name"];
         copy($nome_temporario, "../views/imagens/produtos/$nome.jpg");
@@ -19,8 +19,8 @@ function uploadFotos($ref)
 function deletarFoto($ref)
 {
     $arquivo = "../views/imagens/produtos/$ref.jpg";
-    if (file_exists($arquivo)) { // verifica se o arquivo existe
-        if (!unlink($arquivo)) { //aqui que se remove o arquivo retornando true, senão mostra mensagem
+    if (file_exists($arquivo)) {
+        if (!unlink($arquivo)) {
             echo "Não foi possível deletar o arquivo!";
         }
     }
@@ -70,7 +70,7 @@ if ($opcao == 1) { //inclusão
     $_SESSION['tipos'] = $tipoDao->getTipos();
     $diasDao = new DiasDisponiveisDAO();
     $_SESSION['datas'] = $diasDao->getAllDiasDisponiveisParaServicoComId($servico->get_id_servico());
-    header("Location:../views/formServicoAtualizar.php"); //Verificar se vai usar essa controler mesmo
+    header("Location:../views/formServicoAtualizar.php");
 } else if ($opcao == 4) {
     $id = (int)$_REQUEST['id'];
     $servicoDao = new ServicoDAO();

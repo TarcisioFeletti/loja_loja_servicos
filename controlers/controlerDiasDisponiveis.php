@@ -11,5 +11,3 @@ if($opcao == 1){
     $_SESSION['dias'] = $dao->getAllDiasDisponiveisParaServicoComId($idServico);
     header("Location:../views/escolhaDiasDisponiveis.php?id=$idServico");
 }
-
-?>

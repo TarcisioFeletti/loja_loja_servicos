@@ -15,7 +15,7 @@ $datas = $_SESSION['datas'];
     <form action="../controlers/controlerServico.php" method="post">
         <p>ID: <input type="text" size="20%" name="pId" value="<?php echo $servico->get_id_servico() ?>" readonly>
         <p>Nome: <input type="text" size="50%" name="pNome" value="<?php echo $servico->get_nome() ?>" minlength="1" required maxlength="50">
-        <p>Valor: <input type="number" min="0" name="pValor" value="<?php echo $servico->get_valor() ?>" minlength="1" required >
+        <p>Valor: <input type="number" min="0" name="pValor" value="<?php echo $servico->get_valor() ?>" minlength="1" required>
         <p>Descrição: <input type="text" size="90%" name="pDescricao" value="<?php echo $servico->get_descricao() ?>" minlength="1" required maxlength="50">
         <p>Tipo:
             <select name="pTipo">

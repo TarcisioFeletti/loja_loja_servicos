@@ -11,7 +11,7 @@ $tipos = $_SESSION['tipos'];
         <div class="form">
             <form action="../controlers/controlerServico.php" method="post" enctype="multipart/form-data">
                 <p>Nome: <input type="text" size="50%" name="pNome" minlength="1" required maxlength="50">
-                <p>Valor: <input type="number" min="0" name="pValor" minlength="1" required >
+                <p>Valor: <input type="number" min="0" name="pValor" minlength="1" required>
                 <p>Descrição: <input type="text" size="90%" name="pDescricao" minlength="1" required maxlength="50">
                 <p>Tipo:
                     <select class="custom-select bg-secondary" aria-label="Default select example" name="pTipo">

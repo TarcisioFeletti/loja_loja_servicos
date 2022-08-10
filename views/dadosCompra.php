@@ -16,7 +16,7 @@ require_once 'includes/autenticarMenu.inc.php';
             session_start();
         }
         if (!isset($_SESSION['cliente'])) {
-            echo "<h2><b>Carrinho vazio!</b></h2>"; //mudar
+            echo "<h2><b>Carrinho vazio!</b></h2>";
         } else {
             $cliente = $_SESSION['cliente'];
             $carrinho = $_SESSION['carrinho'];

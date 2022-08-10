@@ -14,9 +14,9 @@ $numPaginas = $_REQUEST['paginas'];
     <p>
     <form class="form" action="../controlers/controlerServico.php" method="get">
         <?php
-        if(isset($_SESSION['busca'])){
-            echo "<input type='text' class='centered' placeholder='Busca' size='80%' name='pBusca' value = ". $_SESSION['busca']. " />";
-        }else{
+        if (isset($_SESSION['busca'])) {
+            echo "<input type='text' class='centered' placeholder='Busca' size='80%' name='pBusca' value = " . $_SESSION['busca'] . " />";
+        } else {
             echo "<input type='text' class='centered' placeholder='Busca' size='80%' name='pBusca' />";
         }
         ?>
@@ -24,9 +24,6 @@ $numPaginas = $_REQUEST['paginas'];
         <input type="hidden" name="pagina" value="1">
         <input class="input_btn" type="submit" value="Buscar">
     </form>
-    <!--<div class='carrinho' align='right'>
-        <a href="../controlers/controlerCarrinho.php?opcao=3"><img src="imagens/meu-carrinho.png"></a>
-    </div>-->
     <div class="container-fluid pt-5 pb-3">
         <div class="row px-xl-5">
             <?php

@@ -17,15 +17,9 @@ class ServicoCarrinho extends Servico
         ($this)->data->setAll($nova_data->get_id_servico(), conversorData($nova_data->get_data_servico()), $nova_data->get_disponivel());
     }
 
-    //getters and setters
     function get_data()
     {
         return ($this)->data;
     }
 
-    function set_data($nova_data)
-    {
-        //($this)->data = strtotime(str_replace('/', '-', $nova_data)); //ERRADO!!!
-    }
 }
-?>

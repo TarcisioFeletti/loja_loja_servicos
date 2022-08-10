@@ -14,9 +14,9 @@ $numPaginas = $_REQUEST['paginas'];
     <p>
     <form class="form" action="../controlers/controlerServico.php" method="get">
         <?php
-        if(isset($_REQUEST['pBusca'])){
-            echo "<input type='text' class='centered' placeholder='Busca' size='80%' name='pBusca' value = ". $_REQUEST['pBusca']. " />";
-        }else{
+        if (isset($_REQUEST['pBusca'])) {
+            echo "<input type='text' class='centered' placeholder='Busca' size='80%' name='pBusca' value = " . $_REQUEST['pBusca'] . " />";
+        } else {
             echo "<input type='text' class='centered' placeholder='Busca' size='80%' name='pBusca' />";
         }
         ?>
@@ -25,15 +25,12 @@ $numPaginas = $_REQUEST['paginas'];
         <input class="input_btn" type="submit" value="Buscar">
     </form>
     <?php
-    if(isset($_REQUEST['erro'])){
-        if($_REQUEST['erro'] == 1){
+    if (isset($_REQUEST['erro'])) {
+        if ($_REQUEST['erro'] == 1) {
             echo "<b><font face='Verdana' size='5' color='gray'>Nenhum produto encontrado</font></b>";
         }
     }
     ?>
-    <!--<div class='carrinho' align='right'>
-        <a href="../controlers/controlerCarrinho.php?opcao=3"><img src="imagens/meu-carrinho.png"></a>
-    </div>-->
     <div class="container-fluid pt-5 pb-3">
         <div class="row px-xl-5">
             <?php
@@ -66,7 +63,7 @@ $numPaginas = $_REQUEST['paginas'];
         <div align="center">
             <?php
             for ($i = 1; $i <= $numPaginas; $i++) {
-                echo '<a class="paginacao_estilo" href="../controlers/controlerServico.php?opcao=9&pagina=' . $i . '&pBusca='. $_REQUEST['pBusca'] .'">' . $i . '</a> ';                
+                echo '<a class="paginacao_estilo" href="../controlers/controlerServico.php?opcao=9&pagina=' . $i . '&pBusca=' . $_REQUEST['pBusca'] . '">' . $i . '</a> ';
             }
             ?>
         </div>

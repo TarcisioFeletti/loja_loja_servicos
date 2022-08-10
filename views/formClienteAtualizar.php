@@ -15,7 +15,7 @@ $cliente = $_SESSION['cliente'];
                 Nome: <input type="text" size="50" name="pNome" value="<?php echo $cliente->get_nome() ?>" minlength="1" required maxlength="50">
                 <p>Endereço: <input type="text" size="100" name="pEndereco" value="<?php echo $cliente->get_endereco() ?>" minlength="1" required maxlength="50">
                 <p>Telefone: <input type="text" size="12" name="pTelefone" value="<?php echo $cliente->get_telefone() ?>" minlength="1" required maxlength="15">
-                <p>Data de Nascimento: <input type="date" name="pData" value="<?php echo conversorData($cliente->get_dt_nascimento()) ?>" required> 
+                <p>Data de Nascimento: <input type="date" name="pData" value="<?php echo conversorData($cliente->get_dt_nascimento()) ?>" required>
                 <p>CPF: <input type="text" size="12" name="pCpf" value="<?php echo $cliente->get_cpf() ?>" minlength="1" required maxlength="50">
                 <p>E-mail: <input type="text" size="20" name="pEmail" value="<?php echo $cliente->get_email() ?>" minlength="1" required maxlength="20">
                 <p>Senha: <input type="text" size="12" name="pSenha" value="<?php echo $cliente->get_senha() ?>" minlength="1" required maxlength="12">
