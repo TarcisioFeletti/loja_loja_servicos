@@ -14,8 +14,7 @@ $tipos = $_SESSION['tipos'];
                 <p>Valor: <input type="number" min="0" name="pValor" minlength="1" required >
                 <p>Descrição: <input type="text" size="90%" name="pDescricao" minlength="1" required maxlength="50">
                 <p>Tipo:
-                    <select name="pTipo">
-                        <option value="()">-</option>>
+                    <select class="custom-select bg-secondary" aria-label="Default select example" name="pTipo">
                         <?php
                         foreach ($tipos as $tipo) {
                             echo "<option value='" . $tipo->get_id_tipo() . "'>" . $tipo->get_id_tipo() . " - " . $tipo->get_nome() . "</option>";

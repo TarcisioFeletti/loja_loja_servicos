@@ -9,7 +9,7 @@ $tipos = $_SESSION['tipos'];
     <h1>Tipos Cadastrados</h1>
     <p>
         <font face="Tahoma">
-            <table border="1" cellspacing="2" cellpadding="1" width="50%">
+            <table class="table" border="1" cellspacing="2" cellpadding="1" width="50%">
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>

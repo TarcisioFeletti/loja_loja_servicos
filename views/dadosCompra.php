@@ -23,16 +23,18 @@ require_once 'includes/autenticarMenu.inc.php';
             $total = $_SESSION['total'];
             $tipoDao = new TipoDAO();
         ?>
-    <div style="line-height: 1cm;">
-        <p>Nome: <?php echo $cliente->get_nome() ?>
-        <p>CPF: <?php echo $cliente->get_cpf() ?>
-        <p>Endereço: <?php echo $cliente->get_endereco() ?>
-        <p>Telefone: <?php echo $cliente->get_telefone() ?>
-        <p>E-mail: <?php echo $cliente->get_email() ?>
+    <div class="container" style="line-height: 1cm;">
+        <ul class="list-group">
+            <li class="list-group-item">Nome: <?php echo $cliente->get_nome() ?></li>
+            <li class="list-group-item">CPF: <?php echo $cliente->get_cpf() ?></li>
+            <li class="list-group-item">Endereço: <?php echo $cliente->get_endereco() ?></li>
+            <li class="list-group-item">Telefone: <?php echo $cliente->get_telefone() ?></li>
+            <li class="list-group-item">E-mail: <?php echo $cliente->get_email() ?></li>
             <br>
+        </ul>
     </div>
     <font face="Tahoma">
-        <table border="1" cellspacing="2" cellpadding="1" width="50%">
+        <table class="table" border="1" cellspacing="2" cellpadding="1" width="50%">
             <tr>
                 <th width="10%">Foto</th>
                 <th>Nome</th>
@@ -60,7 +62,7 @@ require_once 'includes/autenticarMenu.inc.php';
         </table>
     </font>
     <form action="dadosPagamento.php">
-        <input type="submit" value="Proximo>>>">
+        <input class="btn btn-primary" type="submit" value="Proximo>>>">
     </form>
 <?php
         }
