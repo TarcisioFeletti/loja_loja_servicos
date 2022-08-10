@@ -28,43 +28,45 @@ require_once 'includes/autenticarMenu.inc.php';
             }
         ?>
             <font face="Tahoma">
-                <table border="1" cellspacing="2" cellpadding="1" width="50%">
-                    <tr>
-                        <th witdh="10%">Nro</th>
-                        <th width="10%">Foto</th>
-                        <th>Nome</th>
-                        <th>Tipo</th>
-                        <th>Valor do Serviço</th>
-                        <th>Valor do Tipo</th>
-                        <th>Valor Total do Serviço</th>
-                        <th>Data</th>
-                        <th width="10%">Remover?</th>
-                    </tr>
-                    <?php
-                    foreach ($carrinho as $servicoCarrinho) {
-                        //MONTAGEM DA TABELA
-                        $contador++;
-                        $tipo = $tipoDao->getTipo($servicoCarrinho->get_id_tipo());
-                        $total += $servicoCarrinho->get_valor() + $tipo->get_valor();
+                <div class="container">
+                    <table class="table" border="1" cellspacing="2" cellpadding="1" width="50%">
+                        <tr>
+                            <th witdh="10%">Nro</th>
+                            <th width="10%">Foto</th>
+                            <th>Nome</th>
+                            <th>Tipo</th>
+                            <th>Valor do Serviço</th>
+                            <th>Valor do Tipo</th>
+                            <th>Valor Total do Serviço</th>
+                            <th>Data</th>
+                            <th width="10%">Remover?</th>
+                        </tr>
+                        <?php
+                        foreach ($carrinho as $servicoCarrinho) {
+                            //MONTAGEM DA TABELA
+                            $contador++;
+                            $tipo = $tipoDao->getTipo($servicoCarrinho->get_id_tipo());
+                            $total += $servicoCarrinho->get_valor() + $tipo->get_valor();
+                            echo "<tr align='center'>";
+                            echo "<td>" . $contador . "</td>";
+                            echo "<td><img src='imagens/produtos/" . $servicoCarrinho->get_id_servico() . ".jpg' width='70%'></td>";
+                            echo "<td>" . $servicoCarrinho->get_nome() . "</td>";
+                            echo "<td>" . $tipo->get_nome() . "</td>";
+                            echo "<td> R$ " . $servicoCarrinho->get_valor() . "</td>";
+                            echo "<td> R$ " . $tipo->get_valor() . "</td>";
+                            echo "<td> R$ " . $servicoCarrinho->get_valor() + $tipo->get_valor() . "</td>";
+                            $data = $servicoCarrinho->get_data();
+                            echo "<td>" . formatarData($data->get_data_servico()) . "</td>";
+                            echo "<td><a href='../controlers/controlerCarrinho.php?opcao=2&id=" . ($contador - 1) . "'><img src='imagens/rem3.jpg'></a></td>";
+                            echo "</tr>";
+                        }
                         echo "<tr align='center'>";
-                        echo "<td>" . $contador . "</td>";
-                        echo "<td><img src='imagens/produtos/" . $servicoCarrinho->get_id_servico() . ".jpg' width='70%'></td>";
-                        echo "<td>" . $servicoCarrinho->get_nome() . "</td>";
-                        echo "<td>" . $tipo->get_nome() . "</td>";
-                        echo "<td> R$ " . $servicoCarrinho->get_valor() . "</td>";
-                        echo "<td> R$ " . $tipo->get_valor() . "</td>";
-                        echo "<td> R$ " . $servicoCarrinho->get_valor() + $tipo->get_valor() . "</td>";
-                        $data = $servicoCarrinho->get_data();
-                        echo "<td>" . formatarData($data->get_data_servico()) . "</td>";
-                        echo "<td><a href='../controlers/controlerCarrinho.php?opcao=2&id=" . ($contador - 1) . "'><img src='imagens/rem3.jpg'></a></td>";
+                        echo "<td><font color='black'><b>Total<b></font></td>";
+                        echo "<td colspan='8' align='right'><font color='red'><b> R$ " . $total . "</b></font></td>";
                         echo "</tr>";
-                    }
-                    echo "<tr align='center'>";
-                    echo "<td><font color='black'><b>Total<b></font></td>";
-                    echo "<td colspan='8' align='right'><font color='red'><b> R$ " . $total . "</b></font></td>";
-                    echo "</tr>";
-                    ?>
-                </table>
+                        ?>
+                    </table>
+                </div>
             </font>
         <?php
             echo "<a href='servicosVenda.php'><img src='imagens/botao_continuar_comprando.png'></a>";

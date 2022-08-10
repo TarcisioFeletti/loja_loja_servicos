@@ -6,8 +6,8 @@ require_once 'includes/autenticarMenu.inc.php';
     <div class="login-page">
         <div class="form">
             <form class="login-form" action="../controlers/controlerLogin.php" method="get">
-                <input type="text" placeholder="Login" size="20" name="pLogin" />
-                <input type="password" placeholder="Senha" size="10" name="pSenha" />
+                <input type="email" placeholder="Login" size="20" name="pLogin" minlength="1" required maxlength="20" />
+                <input type="password" placeholder="Senha" size="10" name="pSenha" minlength="1" required maxlength="12"/>
                 <input class="input_btn_login" type="submit" value="Login">
                 <p></p>
                 <input class="input_btn_cancelar" type="reset" value="Cancelar">
