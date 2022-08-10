@@ -10,7 +10,7 @@ $tipoDao = new TipoDAO();
     <h1>Serviços Cadastrados</h1>
     <p>
         <font face="Tahoma">
-            <table border="1" cellspacing="2" cellpadding="1" width="50%">
+            <table class="table" border="1" cellspacing="2" cellpadding="1" width="50%">
                 <tr>
                     <th witdh="10%">ID</th>
                     <th>Nome</th>
